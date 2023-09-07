@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import Register from "./RegisterForm";
 function Home() {
     const [cart, setCart] = useState([
         {
@@ -28,6 +29,7 @@ function Home() {
 
     return (
         <div>
+            <Register />
             <button onClick={handlePayment}> Buy now !</button>
         </div>
     )
