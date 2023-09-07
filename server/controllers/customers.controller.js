@@ -30,9 +30,9 @@ async function login(req, res) {
     }
 }
 // Write data to JSON file
-const writeToJson = (filePath, data) => {
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-};
+// const writeToJson = (filePath, data) => {
+//     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+// };
 
 
 async function register(req, res) {
@@ -43,15 +43,32 @@ async function register(req, res) {
     if (existingUser) {
         return res.status(409).json({ message: "Email already registered, choose another one!" });
     }
-    // Hash the password and save the user
-    const user = { ...req.body, password: await bcrypt.hash(req.body.password, 10) };
-    users.push(user);
-    fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+    try {
+        // Create customer in Stripe
+        const createdCustomer = await stripe.customers.create({
+            // You might want to provide email or other details here, not password.
+            email: req.body.email,
+            description: `Customer for ${req.body.username}`
+        });
 
-    const jsonUser = { ...user };
-    delete jsonUser.password;
-    // res.status(201).send(jsonUser);
-    res.status(201).json({ message: "User registered" });
+        // Get customerId from createdCustomer
+        const customerId = createdCustomer.id;
+        // Hash the password and save the user
+        const user = {
+            ...req.body, password: await bcrypt.hash(req.body.password, 10),
+            stripeCustomerId: customerId
+        };
+        users.push(user);
+        fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+
+        const jsonUser = { ...user };
+        delete jsonUser.password;
+        // res.status(201).send(jsonUser);
+        res.status(201).json({ message: "User registered" });
+    } catch (error) {
+        console.error('Error during registration:', error);
+        res.status(500).send('Internal Server Error'); // or some other appropriate error message or status
+    }
 }
 
 

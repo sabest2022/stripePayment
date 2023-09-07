@@ -18,5 +18,10 @@
   {
     "username": "ljh",
     "password": "$2b$10$gFAdDRAMi8cHzG4AbeUVHeQuLRaNOZtpA8U3WMoNYJYpSBHdD1Ttu"
+  },
+  {
+    "username": "kalle",
+    "password": "$2b$10$EzSNZDXqOxlttU5B6FxBFuCkKgaI2Am/flXnOatjd925GmEE2xQpm",
+    "stripeCustomerId": "cus_OasjHGnXHzrUwX"
   }
 ]

@@ -1,8 +1,12 @@
 
 import { useState } from "react";
-import Register from "./RegisterForm";
+
+import Header from "./Header";
+import Products from "./CartItems";
+import { useCartContext } from "../context/CartContext";
 function Home() {
-    const [cart, setCart] = useState([
+    const { cart } = useCartContext();
+    const [carte, setCart] = useState([
         {
             product: "price_1NmwtYAZbxXHiVZzmf9jQyDs",
             quantity: 2
@@ -12,13 +16,18 @@ function Home() {
             quantity: 2
         }
     ]);
+    const transformedCart = cart.map(product => ({
+        product: product.default_price,
+        quantity: 1  // Assuming a default quantity of 1 for each product.
+
+    }));
     async function handlePayment() {
         const response = await fetch("http://localhost:3000/create-checkout-session", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(cart)
+            body: JSON.stringify(transformedCart)
         }
         );
         if (!response.ok) {
@@ -29,7 +38,9 @@ function Home() {
 
     return (
         <div>
-            <Register />
+            <Header />
+            <Products />
+
             <button onClick={handlePayment}> Buy now !</button>
         </div>
     )

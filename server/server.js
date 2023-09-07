@@ -1,8 +1,9 @@
 require("dotenv").config();
 const express = require("express");
-const fs = require("fs");
+
 const path = require('path');
 const { customerRouter } = require("./routes/customers.route");
+const { productsRouter } = require("./routes/products.route");
 const cors = require("cors");
 
 const usersFilePat = path.join(__dirname, './db', "customers.json");
@@ -27,7 +28,7 @@ app.use(cors({
 // });
 app.use(express.json());
 app.use('/api', customerRouter);
-
+app.use('/api', productsRouter);
 // let users = [];
 // const usersFilePath = "./db/custumers.json";
 // if (fs.existsSync(usersFilePath)) {
@@ -58,4 +59,4 @@ app.post("/create-checkout-session", async (req, res) => {
 });
 
 
-app.listen(3000, () => console.log("Server is runing and up..."));
+app.listen(3000, () => console.log("Server is runing and up on port 3000..."));
