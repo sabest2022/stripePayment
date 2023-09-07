@@ -1,7 +1,6 @@
 
 const bcrypt = require("bcrypt");
 const path = require('path');
-require("dotenv").config();
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const stripe = require("stripe")(process.env.STRIPE_KEY)
@@ -13,15 +12,6 @@ const usersFilePath = path.join(__dirname, '../db', 'custumers.json');
 // JSON.parse(jsonData);
 let users = [];
 // const usersFilePath = "../db/customers.json";
-
-async function createStripeUser(req) {
-    const createCustomer = await stripe.customer.create({
-        username: req.body.username,
-        passwiord: req.body.password
-    }),
-
-    const customerId = stripe.customer.id
-}
 
 const usersJson = fs.readFileSync(usersFilePath, "utf8");
 users = JSON.parse(usersJson);
@@ -40,9 +30,9 @@ async function login(req, res) {
     }
 }
 // Write data to JSON file
-// const writeToJson = (filePath, data) => {
-//     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-// };
+const writeToJson = (filePath, data) => {
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+};
 
 
 async function register(req, res) {
@@ -51,7 +41,7 @@ async function register(req, res) {
     const existingUser = users.find((user) => user.username === req.body.username);
 
     if (existingUser) {
-        return res.status(409).json("Email already registered");
+        return res.status(409).json({ message: "Email already registered, choose another one!" });
     }
     // Hash the password and save the user
     const user = { ...req.body, password: await bcrypt.hash(req.body.password, 10) };

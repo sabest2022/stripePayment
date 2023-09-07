@@ -50,13 +50,20 @@ function Register() {
 
     const handleRegister = async () => {
         try {
-            const res = await axios.post("http://localhost:3000/register", { username, password });
+            const res = await axios.post("http://localhost:3000/api/customers/register", { username, password });
             setMessage(res.data.message);
             setShowRegistration(false);
         } catch (err) {
-            setMessage("Registration failed.");
+            if (err.response && err.response.data) {
+                // Get the error message from the server response
+                setMessage(err.response.data.message || "An error occurred");
+            } else {
+                // Generic error message
+                setMessage("An error occurred");
+            }
         }
     };
+
     if (isLoggedIn) {
         return <div>You are already logged in!</div>;
     }
