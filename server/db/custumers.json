@@ -23,5 +23,10 @@
     "username": "kalle",
     "password": "$2b$10$EzSNZDXqOxlttU5B6FxBFuCkKgaI2Am/flXnOatjd925GmEE2xQpm",
     "stripeCustomerId": "cus_OasjHGnXHzrUwX"
+  },
+  {
+    "username": "sume@me.com",
+    "password": "$2b$10$uOy8ed4A/1oJkxTlGYP8IuUyEXjrPmA75NyMhqn39M/m12rT4sGce",
+    "stripeCustomerId": "cus_Ob0R9dcpdpMDDs"
   }
 ]

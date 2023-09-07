@@ -35,7 +35,7 @@ function Products() {
                     <h2>{product.name}</h2>
                     <p>{product.description}</p>
                     <button onClick={() => addToCart(product)}>Add to cart!</button>
-                    <button onClick={() => removeFromCart(product)}>Remove from cart!</button>
+                    <button onClick={() => { console.log("Remove button clicked for:", product); removeFromCart(product); }}>Remove from cart!</button>
                 </div>
             ))}
         </div>

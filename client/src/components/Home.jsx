@@ -16,10 +16,9 @@ function Home() {
             quantity: 2
         }
     ]);
-    const transformedCart = cart.map(product => ({
-        product: product.default_price,
-        quantity: 1  // Assuming a default quantity of 1 for each product.
-
+    const transformedCart = cart.map(item => ({
+        product: item.product.default_price,
+        quantity: item.quantity // Assuming a default quantity of 1 for each product.
     }));
     async function handlePayment() {
         const response = await fetch("http://localhost:3000/create-checkout-session", {
@@ -29,7 +28,7 @@ function Home() {
             },
             body: JSON.stringify(transformedCart)
         }
-        );
+        ); console.log(transformedCart);
         if (!response.ok) {
             return
         } const { url } = await response.json();
