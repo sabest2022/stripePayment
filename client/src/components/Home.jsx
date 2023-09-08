@@ -1,21 +1,11 @@
 
-import { useState } from "react";
 
 import Header from "./Header";
 import Products from "./CartItems";
 import { useCartContext } from "../context/CartContext";
 function Home() {
     const { cart } = useCartContext();
-    const [carte, setCart] = useState([
-        {
-            product: "price_1NmwtYAZbxXHiVZzmf9jQyDs",
-            quantity: 2
-        },
-        {
-            product: "price_1NmwsHAZbxXHiVZz62iKEfqF",
-            quantity: 2
-        }
-    ]);
+
     const transformedCart = cart.map(item => ({
         product: item.product.default_price,
         quantity: item.quantity // Assuming a default quantity of 1 for each product.

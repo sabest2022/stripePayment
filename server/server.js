@@ -12,7 +12,7 @@ const usersFilePat = path.join(__dirname, './db', "customers.json");
 // JSON.parse(jsonData);
 // console.log(jsonData);
 const stripe = require("stripe")(process.env.STRIPE_KEY)
-const CLIENT_URL = "http://localhost:5174"
+const CLIENT_URL = "http://localhost:5173"
 
 const app = express();
 
