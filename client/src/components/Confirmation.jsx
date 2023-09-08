@@ -5,10 +5,12 @@ function Confirmation() {
     const { cart, setCart } = useCartContext();
 
     useEffect(() => {
-        console.log(cart);
-        // If you want to empty the cart after confirmation
-        setCart([]);
-    }, [setCart]);
+        if (window.location.pathname === "/confirmation") {
+            // Display a success message
+            alert("Payment was successful!");
+        }
+        // You can handle other paths similarly
+    }, []);
 
     return (
         <div>

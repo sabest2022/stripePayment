@@ -56,7 +56,7 @@ async function register(req, res) {
         // Create customer in Stripe
         const createdCustomer = await stripe.customers.create({
             // You might want to provide email or other details here, not password.
-            email: req.body.email,
+            email: req.body.username,
             description: `Customer for ${req.body.username}`
         });
 

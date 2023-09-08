@@ -48,5 +48,10 @@
     "username": "admin@admin.se",
     "password": "$2b$10$ZOJfoouxygIUuEPUiz.G3uIxGT0Ztb9D7tHl1ay2KRG8p/81O7TRW",
     "stripeCustomerId": "cus_ObCg5jLy526v7c"
+  },
+  {
+    "username": "saeed@admin.se",
+    "password": "$2b$10$O.Z1rC9LFwftuCpUnOAdXe3lbJoxpCVATbZl93IVvp9HqtrhKy5Vu",
+    "stripeCustomerId": "cus_ObHSLscegHs8uY"
   }
 ]

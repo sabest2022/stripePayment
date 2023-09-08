@@ -15,19 +15,20 @@ const CartProvider = ({ children }) => {
 
             if (existingProduct) {
                 // Increase the quantity of the existing product
-                return prevCart.map(item =>
+                const newCart = prevCart.map(item =>
                     item.product.id === product.id
                         ? { ...item, quantity: item.quantity + 1 }
                         : item
                 );
+                console.log(newCart);
+                return newCart;
             } else {
                 // Add the new product to the cart
-                return [...prevCart, { product, quantity: 1 }];
+                const newCart = [...prevCart, { product, quantity: 1 }];
+                console.log(newCart);
+                return newCart;
             }
         });
-
-        // Log the local copy
-        console.log(cart);
     }
 
     function removeFromCart(product) {
@@ -52,7 +53,6 @@ const CartProvider = ({ children }) => {
             return updatedCart;
         });
     }
-
 
     return (
         <CartContext.Provider value={{ cart, addToCart, removeFromCart, setCart }}>
