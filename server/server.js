@@ -17,9 +17,13 @@ const CLIENT_URL = "http://localhost:5173"
 const app = express();
 
 app.use(cors({
-    origin: "*",
+    origin: 'http://localhost:5173',
+    credentials: true
 }
 ));
+const cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
 
 // app.use((req, res, next) => {
 //     console.log(`Request URL: ${req.url}`);

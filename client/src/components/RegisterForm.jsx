@@ -7,46 +7,63 @@ function Register() {
     const [message, setMessage] = useState("");
     const [showRegistration, setShowRegistration] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            setIsLoggedIn(true);
-            setMessage("You are already logged in!");
+        async function checkAuthStatus() {
+            try {
+                const response = await axios.get("http://localhost:3000/api/customers/status", { withCredentials: true });
+                console.log("Status response:", response.status);
+                if (response.status === 200) {
+                    setIsLoggedIn(true);
+                    setMessage("You are already logged in!");
+                }
+            } catch (error) {
+                setIsLoggedIn(false);
+
+                setMessage("Not authenticated");
+                console.error("Axios error:", error.response.status);
+            }
         }
+
+        checkAuthStatus();
     }, []);
+
+
 
     const handleLogin = async () => {
         try {
-            const res = await axios.post("http://localhost:3000/api/customers/login", { username, password });
-            console.log("Response from server:", res);
-            const token = res.data.token;
-            localStorage.setItem('token', token); // Save the token
-            setIsLoggedIn(true);
-            setMessage(res.data.message);
-            setShowRegistration(false);
+            const res = await axios.post("http://localhost:3000/api/customers/login", { username, password },
+                { withCredentials: true });
+            if (res.status === 200) {
+                setIsLoggedIn(true);
+                setMessage(res.data.message);
+                setShowRegistration(false);
+            }
         } catch (err) {
+            setIsLoggedIn(false);
             setShowRegistration(true);
             setMessage("User not found, please register.");
         }
     };
 
-    // async function handleLogin(email, password) {
-    //     try {
-    //         const res = await axios.post('http://localhost:3000/api/customers/login', { username, password });
-    //         const token = res.data.token;
-    //         localStorage.setItem('token', token); // Save the token
-    //         setIsLoggedIn(true);
-    //         setMessage(res.data.message);
-    //         setShowRegistration(false);
-    //         // Handle login success
-    //         // Maybe redirect to a different page
-    //     } catch (error) {
-    //         setShowRegistration(true);
-    //         setMessage("User not found, please register.");
-    //         // Handle login failure
-    //         console.error("An error occurred while logging in:", error);
-    //     }
-    // }
+
+    const handleLogout = async () => {
+        try {
+            // Call the server's logout endpoint
+            await axios.post("http://localhost:3000/logout", {}, { withCredentials: true });
+
+            // Remove token from localStorage if it's there
+            localStorage.removeItem('token');
+
+            // Update UI state
+            setIsLoggedIn(false);
+            setMessage("Logged out successfully!");
+        } catch (error) {
+            console.error("Error during logout:", error);
+        }
+    };
+
 
     const handleRegister = async () => {
         try {

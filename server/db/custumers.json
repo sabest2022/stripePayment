@@ -28,5 +28,25 @@
     "username": "sume@me.com",
     "password": "$2b$10$uOy8ed4A/1oJkxTlGYP8IuUyEXjrPmA75NyMhqn39M/m12rT4sGce",
     "stripeCustomerId": "cus_Ob0R9dcpdpMDDs"
+  },
+  {
+    "username": "esiask",
+    "password": "$2b$10$Q8t0JCm/g88NSSPQO0Ewau1G0iQx9Rd9Csb/wDDjODSsWzRxessfK",
+    "stripeCustomerId": "cus_ObCJ5fFUYJKDhJ"
+  },
+  {
+    "username": "esiaskarian",
+    "password": "$2b$10$eZ7Asu3tOAiwvCsfYKywCeTl9hEAJqYHwKFki55DK9S6.c6sqK/fy",
+    "stripeCustomerId": "cus_ObCYz746hicACB"
+  },
+  {
+    "username": "esis",
+    "password": "$2b$10$4nDNljk3CoyFqZR1q7yqQOxZ4GeRsTCdt5HYvOffCO4u.YB6EQr8u",
+    "stripeCustomerId": "cus_ObCeUlAV1hZ9js"
+  },
+  {
+    "username": "admin@admin.se",
+    "password": "$2b$10$ZOJfoouxygIUuEPUiz.G3uIxGT0Ztb9D7tHl1ay2KRG8p/81O7TRW",
+    "stripeCustomerId": "cus_ObCg5jLy526v7c"
   }
 ]

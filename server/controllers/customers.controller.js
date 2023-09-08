@@ -21,14 +21,25 @@ async function login(req, res) {
     console.log("The endpoint does work!")
     const { username, password } = req.body;
     const user = users.find((u) => u.username === username);
-    console.log(users);
+
+
     if (user && await bcrypt.compare(password, user.password)) {
         const token = jwt.sign({ username: user.username }, 'your_secret_key', { expiresIn: '1h' });
-        res.status(200).json({ message: "Logged in", token });
+
+        // Set JWT token as an httpOnly cookie
+        res.cookie('auth-token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV !== 'development',
+            maxAge: 3600000,  // The cookie will expire in 1 hour (value is in milliseconds)
+            sameSite: 'strict'
+        });
+
+        res.status(200).json({ message: "Logged in" });
     } else {
         res.status(401).json({ message: "Invalid credentials" });
     }
 }
+
 // Write data to JSON file
 // const writeToJson = (filePath, data) => {
 //     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
@@ -36,8 +47,6 @@ async function login(req, res) {
 
 
 async function register(req, res) {
-
-
     const existingUser = users.find((user) => user.username === req.body.username);
 
     if (existingUser) {
@@ -76,11 +85,17 @@ async function register(req, res) {
 //   Logout the user and remove the cookie and session
 
 async function logout(req, res) {
-    if (!req.session._id) {
-        return res.status(400).json("Cannot logout when you are not logged in");
-    }
-    req.session = null;
-    res.status(204).json(null);
+    // If using token blacklisting, add the token from the cookie to the blacklist.
+
+    // Clear the auth cookie
+    res.cookie('auth-token', '', {
+        expires: new Date(0),
+        httpOnly: true,
+        secure: process.env.NODE_ENV !== 'development',
+        sameSite: 'strict'
+    });
+
+    res.status(200).json({ message: "Logged out" });
 }
 
 async function authorize(req, res) {

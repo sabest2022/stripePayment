@@ -39,25 +39,25 @@ function Products() {
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                 {products.map(product => {
                     return (
-                        <div key={product.id} className="border p-2 rounded-lg shadow-sm w-56 h-72">
-                            <img src={product.images[0]} alt={product.name} className="w-full h-24 object-contain mb-2 rounded" />
-                            <h2 className="text-lg mb-1">{product.name}</h2>
+                        <div key={product.id} className="border p-2 rounded-lg shadow-sm w-84 h-108"> {/* Adjusted width and height for 50% larger */}
+                            <img src={product.images[0]} alt={product.name} className="w-full h-36 object-contain mb-2 rounded" /> {/* Adjusted image height to 50% larger */}
+                            <h2 className="text-sm mb-1 text-center">{product.name}</h2> {/* Center-aligned product name */}
                             <p
                                 className={`text-xs text-gray-600 mb-2 overflow-hidden ${expandedDescriptions.includes(product.id) ? '' : 'line-clamp-1'}`}
                                 onClick={() => toggleDescription(product.id)} // Use the toggleDescription function here
                             >
                                 {product.description}
                             </p>
-                            <div className="flex gap-2 mt-2">
+                            <div className="flex gap-2 mt-2 justify-center"> {/* Center-aligned buttons */}
                                 <button onClick={() => addToCart(product)} className="bg-blue-500 text-white text-xs rounded-md hover:bg-blue-600 transition-colors w-16 h-4">Add</button>
                                 <button onClick={() => { console.log("Remove button clicked for:", product); removeFromCart(product); }} className="bg-red-500 text-white text-xs rounded-md hover:bg-red-600 transition-colors w-16 h-4">Remove</button>
-
                             </div>
                         </div>
                     );
                 })}
             </div>
         </div>
+
     );
 }
 
