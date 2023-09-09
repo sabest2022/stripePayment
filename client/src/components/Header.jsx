@@ -18,6 +18,7 @@ function Header() {
         }
         ); console.log(transformedCart);
         if (!response.ok) {
+            alert("Log in to procced!");
             return
         } const { url, sessionId, paymentStatus } = await response.json();
         // console.log("Session ID:", sessionId);
@@ -25,10 +26,11 @@ function Header() {
         window.location = url;
     }
     return (
-        <div>
+        <div className="flex justify-between items-center bg-blue-500 p-4">
             <Register />
-            <button onClick={handlePayment}> Checkout!</button>
+            <button onClick={handlePayment} className="bg-white text-blue-500 px-4 py-2 rounded hover:bg-gray-200"> Checkout!</button>
         </div>
+
     )
 }
 export default Header 

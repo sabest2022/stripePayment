@@ -14,9 +14,9 @@ const customerRouter = express
 
         if (token) {
             try {
-                jwt.verify(token, 'your_secret_key');
+                const decoded = jwt.verify(token, 'your_secret_key');
                 // console.log("Token verified successfully.");
-                res.status(200).send();
+                res.status(200).send({ message: `(${decoded.username}) is logged in ` });
             } catch (err) {
                 console.log("Token verification failed:", err.message);
                 res.status(401).send();

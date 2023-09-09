@@ -35,7 +35,7 @@ function Products() {
 
     return (
         <div className="p-4">
-            <h1 className="text-2xl mb-4">Products</h1>
+            {/* <h1 className="text-2xl mb-4">Products</h1> */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                 {products.map(product => {
                     return (

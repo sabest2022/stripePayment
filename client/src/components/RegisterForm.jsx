@@ -16,13 +16,15 @@ function Register() {
                 console.log("Status response:", response.status);
                 if (response.status === 200) {
                     setIsLoggedIn(true);
-                    setMessage("You are already logged in!");
+                    const serverMessage = response.data.message;
+                    setMessage(serverMessage);
+                    console.log(serverMessage);
                 }
             } catch (error) {
                 setIsLoggedIn(false);
-
-                setMessage("Not authenticated");
-                console.error("Axios error:", error.response.status);
+                // alert("Please log in to proceed!");
+                // setMessage("Please log in to proceed!");
+                // console.error("Axios error:", error.response.status);
             }
         }
 
@@ -82,33 +84,48 @@ function Register() {
     };
 
     if (isLoggedIn) {
-        return <div>You are already logged in!</div>;
+        return <div>{message}</div>;
     }
     return (
-        <div>
-            <form>
-                <h1>{showRegistration ? "Registration" : "Login"}</h1>
+        <div className="flex items-center space-x-4">
+            <form className="flex items-center space-x-4">
+                {/* <h1>{showRegistration ? "Registration" : "Login"}</h1> */}
                 <input
                     type="text"
                     placeholder="Email"
                     autoComplete="username"
                     onChange={(e) => setUsername(e.target.value)}
+                    className="px-2 py-1 rounded border border-gray-300"
                 />
                 <input
                     type="password"
                     placeholder="Password"
                     autoComplete={showRegistration ? "new-password" : "current-password"}
                     onChange={(e) => setPassword(e.target.value)}
+                    className="px-2 py-1 rounded border border-gray-300"
                 />
                 {showRegistration ? (
-                    <button type="button" onClick={handleRegister}>Register</button>
+                    <button
+                        type="button"
+                        onClick={handleRegister}
+                        className="bg-white text-blue-500 px-2 py-1 rounded hover:bg-gray-200"
+                    >
+                        Register
+                    </button>
                 ) : (
-                    <button type="button" onClick={handleLogin}>Login</button>
+                    <button
+                        type="button"
+                        onClick={handleLogin}
+                        className="bg-white text-blue-500 px-2 py-1 rounded hover:bg-gray-200"
+                    >
+                        Login
+                    </button>
                 )}
             </form>
-            <p>{message}</p>
+            <p className="text-white">{message}</p>
         </div>
     );
+
 }
 
 export default Register;

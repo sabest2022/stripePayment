@@ -53,5 +53,20 @@
     "username": "saeed@admin.se",
     "password": "$2b$10$O.Z1rC9LFwftuCpUnOAdXe3lbJoxpCVATbZl93IVvp9HqtrhKy5Vu",
     "stripeCustomerId": "cus_ObHSLscegHs8uY"
+  },
+  {
+    "username": "askarian@me.se",
+    "password": "$2b$10$ARRcO9p4Iv4qXpsmRbgE9elTuPUMZjI5d5kTWcteDIUK9DmFUjIBG",
+    "stripeCustomerId": "cus_ObM4KxzsZJNAuI"
+  },
+  {
+    "username": "askarians@me.com",
+    "password": "$2b$10$Qev1rFwsc4PrrtO7x.Ne3uwWbCopcXQDu6mlLTjizwMgF2TOylLDK",
+    "stripeCustomerId": "cus_ObQAgBC5sMdxGh"
+  },
+  {
+    "username": "askarians@me.se",
+    "password": "$2b$10$Xp5H/eSOvKAgn47K74x.x.rdzOAIzLJRUNLDqyS4BKrk3PLBzg9.C",
+    "stripeCustomerId": "cus_ObZmZebP5T1csm"
   }
 ]

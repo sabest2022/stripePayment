@@ -32,6 +32,50 @@ app.use(cookieParser());
 //     console.log(`Request Method: ${req.method}`);
 //     next();
 // });
+
+const endpointSecret = "whsec_925f5e6e5a8acabe41114d465fcfa5b1e557567d324115618bd7842e6ad22f13";
+
+app.post('/webhook', express.raw({ type: 'application/json' }), (request, response) => {
+    const sig = request.headers['stripe-signature'];
+
+    let event;
+
+    try {
+        event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+    } catch (err) {
+        console.error('Webhook signature verification failed:', err.message);
+        console.error(err.stack);
+        response.status(400).send(`Webhook Error: ${err.message}`);
+        return;
+    }
+
+    // Handle the event
+    switch (event.type) {
+        case 'payment_intent.succeeded':
+            const paymentIntent = event.data.object;
+            // Then d // Extract customer's email
+            console.log(paymentIntent);
+            const email = paymentIntent.receipt_email;
+            const amount = paymentIntent.amount;
+            const currency = paymentIntent.currency;
+            const customer = paymentIntent.customer;
+            const paymentMethod = paymentIntent.payment_method; // The ID of the payment method used
+
+            console.log(`Received payment for ${amount} ${currency} from ${customer}`);
+
+            // Extracting the customer ID (if associated)
+            const customerId = paymentIntent.customer;
+            break;
+        // ... handle other event types
+        default:
+            console.log(`Unhandled event type ${event.type}`);
+    }
+
+    // Return a 200 response to acknowledge receipt of the event
+    response.send();
+});
+
+
 app.use(express.json());
 app.use('/api', customerRouter);
 app.use('/api', productsRouter);
@@ -57,7 +101,7 @@ const getStripeCustomerIdByEmail = (email) => {
 const authenticateJWT = (req, res, next) => {
     const token = req.cookies['auth-token'];
 
-    if (!token) return res.status(401).send("No token provided");
+    if (!token) return res.status(401).json("No token provided");
 
 
     try {
@@ -103,6 +147,9 @@ app.post("/create-checkout-session", authenticateJWT, async (req, res) => {
         res.status(400).send("Det gick inte bra");
     }
 });
+// This is your Stripe CLI webhook secret for testing your endpoint locally.
+
+
 
 
 

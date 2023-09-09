@@ -33,7 +33,7 @@ async function login(req, res) {
             maxAge: 3600000,  // The cookie will expire in 1 hour (value is in milliseconds)
             sameSite: 'strict'
         });
-
+        console.log("Sending Logged in response...");
         res.status(200).json({ message: "Logged in" });
     } else {
         res.status(401).json({ message: "Invalid credentials" });
