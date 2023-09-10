@@ -18,27 +18,35 @@ users = JSON.parse(usersJson);
 
 
 async function login(req, res) {
-    console.log("The endpoint does work!")
+    // console.log("The endpoint does work!")
     const { username, password } = req.body;
     const user = users.find((u) => u.username === username);
 
-
-    if (user && await bcrypt.compare(password, user.password)) {
-        const token = jwt.sign({ username: user.username }, 'your_secret_key', { expiresIn: '1h' });
-
-        // Set JWT token as an httpOnly cookie
-        res.cookie('auth-token', token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV !== 'development',
-            maxAge: 3600000,  // The cookie will expire in 1 hour (value is in milliseconds)
-            sameSite: 'strict'
-        });
-        console.log("Sending Logged in response...");
-        res.status(200).json({ message: "Logged in" });
-    } else {
-        res.status(401).json({ message: "Invalid credentials" });
+    // Case: User does not exist
+    if (!user) {
+        return res.status(401).json({ message: "Username or password is wrong" });
     }
+
+    // Case: User exists but password doesn't match
+    if (!await bcrypt.compare(password, user.password)) {
+        return res.status(401).json({ message: "Username or password is wrong" });
+    }
+
+    // Case: User exists and password matches
+    const token = jwt.sign({ username: user.username }, 'your_secret_key', { expiresIn: '1h' });
+
+    // Set JWT token as an httpOnly cookie
+    res.cookie('auth-token', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV !== 'development',
+        maxAge: 3600000,  // The cookie will expire in 1 hour (value is in milliseconds)
+        sameSite: 'strict'
+    });
+
+    console.log("Sending Logged in response...");
+    res.status(200).json({ message: "Logged in" });
 }
+
 
 // Write data to JSON file
 // const writeToJson = (filePath, data) => {

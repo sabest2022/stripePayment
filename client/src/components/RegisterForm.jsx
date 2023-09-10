@@ -45,7 +45,12 @@ function Register() {
         } catch (err) {
             setIsLoggedIn(false);
             setShowRegistration(true);
-            setMessage("User not found, please register.");
+
+            if (err.response && err.response.status === 401) {
+                setMessage(err.response.data.message);
+            } else {
+                setMessage("An error occurred during login.");
+            }
         }
     };
 
