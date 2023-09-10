@@ -153,5 +153,15 @@
     "username": "asd@dari.com",
     "password": "$2b$10$6zNSPaCcBZcQyE9K2fQAzOBZ.Bz2Vak1kP7At0fAqw8xCGQJnoLoC",
     "stripeCustomerId": "cus_Oc77h03hCAMncT"
+  },
+  {
+    "username": "cadi@padi.com",
+    "password": "$2b$10$GdcoUCg/aMSZlZmFAk34BeeIBIVWacv8vHqnMHfQf4z0R.s51kHCy",
+    "stripeCustomerId": "cus_Oc798cuiNOyWdF"
+  },
+  {
+    "username": "masume@gmail.com",
+    "password": "$2b$10$lNmUtxM.am16rmm2VY.ea.xvJPxAsuk1xV8d8C4EI0S3ujNA/CZ1i",
+    "stripeCustomerId": "cus_Oc7m7VViEK6XJp"
   }
 ]

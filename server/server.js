@@ -58,7 +58,7 @@ app.post('/webhook', express.raw({ type: 'application/json' }), async (request, 
                 const checkoutSession = event.data.object;
                 console.log("checkoutSession", checkoutSession);
 
-                const amountTotal = checkoutSession.amount_total;
+                const amountTotal = checkoutSession.amount_total / 100;
                 const currency = checkoutSession.currency;
                 const customerId = checkoutSession.customer;
                 const customer = checkoutSession.customer_details.email;
@@ -75,7 +75,7 @@ app.post('/webhook', express.raw({ type: 'application/json' }), async (request, 
                 const orderedItems = lineItems.map(item => {
                     return {
                         name: item.description,
-                        price: item.price.unit_amount,
+                        price: item.price.unit_amount / 100,
                         quantity: item.quantity
                     };
                 });

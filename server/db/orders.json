@@ -138,5 +138,90 @@
     ],
     "paymentStatus": "paid",
     "paymentCompletedDate": "2023-09-10T19:02:50.000Z"
+  },
+  {
+    "customerId": "cus_Oc798cuiNOyWdF",
+    "customer": "cadi@padi.com",
+    "amountTotal": 243000,
+    "currency": "sek",
+    "orderedItems": [
+      {
+        "name": "Naturkunskap",
+        "price": 76000,
+        "quantity": 1
+      },
+      {
+        "name": "Juridik",
+        "price": 87000,
+        "quantity": 1
+      },
+      {
+        "name": "Medicin 2",
+        "price": 42000,
+        "quantity": 1
+      },
+      {
+        "name": "Medicin 1",
+        "price": 38000,
+        "quantity": 1
+      }
+    ],
+    "paymentStatus": "paid",
+    "paymentCompletedDate": "2023-09-10T19:04:59.000Z"
+  },
+  {
+    "customerId": "cus_Oc798cuiNOyWdF",
+    "customer": "cadi@padi.com",
+    "amountTotal": 163000,
+    "currency": "sek",
+    "orderedItems": [
+      {
+        "name": "Naturkunskap",
+        "price": 760,
+        "quantity": 1
+      },
+      {
+        "name": "Juridik",
+        "price": 870,
+        "quantity": 1
+      }
+    ],
+    "paymentStatus": "paid",
+    "paymentCompletedDate": "2023-09-10T19:07:35.000Z"
+  },
+  {
+    "customerId": "cus_Oc798cuiNOyWdF",
+    "customer": "cadi@padi.com",
+    "amountTotal": 2160,
+    "currency": "sek",
+    "orderedItems": [
+      {
+        "name": "Medicin 2",
+        "price": 420,
+        "quantity": 1
+      },
+      {
+        "name": "Juridik",
+        "price": 870,
+        "quantity": 2
+      }
+    ],
+    "paymentStatus": "paid",
+    "paymentCompletedDate": "2023-09-10T19:09:26.000Z"
+  },
+  {
+    "customerId": "cus_Oc7m7VViEK6XJp",
+    "customer": "masume@gmail.com",
+    "amountTotal": 420,
+    "currency": "sek",
+    "orderedItems": [
+      {
+        "name": "Medicin 2",
+        "price": 420,
+        "quantity": 1
+      }
+    ],
+    "paymentStatus": "paid",
+    "paymentCompletedDate": "2023-09-10T19:44:16.000Z"
   }
 ]
