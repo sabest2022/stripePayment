@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
 const usersFilePat = path.join(__dirname, './db', "custumers.json");
+const ordersFilePath = path.join(__dirname, './db', "orders.json");
 // console.log(usersFilePat)
 // const jsonData = fs.readFileSync(usersFilePat, "utf-8");
 // JSON.parse(jsonData);
@@ -52,19 +53,44 @@ app.post('/webhook', express.raw({ type: 'application/json' }), (request, respon
     // Handle the event
     switch (event.type) {
         case 'payment_intent.succeeded':
-            const paymentIntent = event.data.object;
+            // const paymentIntent = event.data.object;
             // Then d // Extract customer's email
-            console.log(paymentIntent);
-            const email = paymentIntent.receipt_email;
-            const amount = paymentIntent.amount;
-            const currency = paymentIntent.currency;
-            const customer = paymentIntent.customer;
-            const paymentMethod = paymentIntent.payment_method; // The ID of the payment method used
+            // console.log(paymentIntent);
+            // const amount = paymentIntent.amount;
+            // const currency = paymentIntent.currency;
+            // const customer = paymentIntent.customer;
+            // const paymentMethod = paymentIntent.payment_method_types[0]; // The ID of the payment method used
+            // const newPayment = { customer_id: { customer }, amount: { amount }, currency: { currency }, paymentMethod: { paymentMethod } };
+            // console.log(`Received payment for ${amount} ${currency} from ${customer} paymentMethod ${paymentMethod}`);
 
-            console.log(`Received payment for ${amount} ${currency} from ${customer}`);
 
-            // Extracting the customer ID (if associated)
-            const customerId = paymentIntent.customer;
+            break;
+        case 'checkout.session.completed':
+            const checkoutSession = event.data.object;
+            console.log("checkoutSession", checkoutSession);
+
+            const amountTotal = checkoutSession.amount_total;
+            const currency = checkoutSession.currency;
+            const customerId = checkoutSession.customer;
+            const customer = checkoutSession.customer_details.email;
+            const paymentStatus = checkoutSession.payment_status;
+            const order = { customerId, customer, amountTotal, currency, paymentStatus };
+            console.log(order);
+
+            const ordersJson = fs.readFileSync(ordersFilePath, "utf8");
+            let orders = [];
+            orders = JSON.parse(ordersJson);
+            orders.push(order);
+            fs.writeFileSync(ordersFilePath, JSON.stringify(orders, null, 2));
+
+            break;
+        case 'charge.succeeded':
+            const chargeSucceded = event.data.object;
+            // console.log("chargeSucceded", chargeSucceded);
+            break;
+        case 'payment_intent.created':
+            const paymentIntentCreated = event.data.object;
+            // console.log("paymentIntentCreated", paymentIntentCreated);
             break;
         // ... handle other event types
         default:

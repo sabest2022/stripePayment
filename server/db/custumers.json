@@ -68,5 +68,15 @@
     "username": "askarians@me.se",
     "password": "$2b$10$Xp5H/eSOvKAgn47K74x.x.rdzOAIzLJRUNLDqyS4BKrk3PLBzg9.C",
     "stripeCustomerId": "cus_ObZmZebP5T1csm"
+  },
+  {
+    "username": "askarians@meli.se",
+    "password": "$2b$10$u.hR/DV9DLMtWRaOWJx9euoiLikxtt7HkGMlRb0CTFQCOZ/F5BdMq",
+    "stripeCustomerId": "cus_Obb8SpwTj8swlK"
+  },
+  {
+    "username": "masumeSayad@gmail.com",
+    "password": "$2b$10$mjVbFjrzYGKo12QR3DWuQ.2uD2vOqndUua9YpZtzMBPG72VRjpf7S",
+    "stripeCustomerId": "cus_ObdC6yqt0K54ZI"
   }
 ]

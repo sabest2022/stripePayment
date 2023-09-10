@@ -1,0 +1,23 @@
+[
+  {
+    "customerId": "cus_Obb8SpwTj8swlK",
+    "customer": "askarians@meli.se",
+    "amountTotal": 38000,
+    "currency": "sek",
+    "paymentStatus": "paid"
+  },
+  {
+    "customerId": "cus_Obb8SpwTj8swlK",
+    "customer": "askarians@meli.se",
+    "amountTotal": 171000,
+    "currency": "sek",
+    "paymentStatus": "paid"
+  },
+  {
+    "customerId": "cus_ObdC6yqt0K54ZI",
+    "customer": "masumeSayad@gmail.com",
+    "amountTotal": 250000,
+    "currency": "sek",
+    "paymentStatus": "paid"
+  }
+]
