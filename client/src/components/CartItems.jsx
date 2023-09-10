@@ -22,8 +22,8 @@ function Products() {
         async function fetchProducts() {
             try {
                 const response = await axios.get('http://localhost:3000/api/products');
-                setProducts(response.data.data);
-                console.log(response.data.data)
+                setProducts(response.data);
+                console.log(response.data);
             } catch (error) {
                 console.error("Error fetching products:", error);
             }
@@ -41,7 +41,8 @@ function Products() {
                     return (
                         <div key={product.id} className="border p-2 rounded-lg shadow-sm w-84 h-108"> {/* Adjusted width and height for 50% larger */}
                             <img src={product.images[0]} alt={product.name} className="w-full h-36 object-contain mb-2 rounded" /> {/* Adjusted image height to 50% larger */}
-                            <h2 className="text-sm mb-1 text-center">{product.name}</h2> {/* Center-aligned product name */}
+                            <h3 className="text-sm mb-1 text-center">{`${product.name}  ${product.price.unit_amount / 100} Kr`}</h3>
+
                             <p
                                 className={`text-xs text-gray-600 mb-2 overflow-hidden ${expandedDescriptions.includes(product.id) ? '' : 'line-clamp-1'}`}
                                 onClick={() => toggleDescription(product.id)} // Use the toggleDescription function here
