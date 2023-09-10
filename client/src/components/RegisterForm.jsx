@@ -7,7 +7,7 @@ function Register() {
     const [message, setMessage] = useState("");
     const [showRegistration, setShowRegistration] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+    const [showLogin, setShowLogin] = useState(true);
 
     useEffect(() => {
         async function checkAuthStatus() {
@@ -27,7 +27,6 @@ function Register() {
                 // console.error("Axios error:", error.response.status);
             }
         }
-
         checkAuthStatus();
     }, []);
 
@@ -48,6 +47,7 @@ function Register() {
 
             if (err.response && err.response.status === 401) {
                 setMessage(err.response.data.message);
+
             } else {
                 setMessage("An error occurred during login.");
             }
@@ -74,9 +74,12 @@ function Register() {
 
     const handleRegister = async () => {
         try {
-            const res = await axios.post("http://localhost:3000/api/customers/register", { username, password });
-            setMessage(res.data.message);
-            setShowRegistration(false);
+            const res = await axios.post("http://localhost:3000/api/customers/register", { username, password }, { withCredentials: true });
+            if (res.status === 201) {  // Check for status 201 which means created
+                setIsLoggedIn(true);  // Set user as logged in
+                setMessage(res.data.message);
+                setShowRegistration(false);
+            }
         } catch (err) {
             if (err.response && err.response.data) {
                 // Get the error message from the server response
@@ -91,43 +94,59 @@ function Register() {
     if (isLoggedIn) {
         return <div>{message}</div>;
     }
+
     return (
-        <div className="flex items-center space-x-4">
-            <form className="flex items-center space-x-4">
-                {/* <h1>{showRegistration ? "Registration" : "Login"}</h1> */}
+        <div className="flex flex-col items-center space-y-2">
+            <form className="flex items-center space-x-2">
                 <input
                     type="text"
                     placeholder="Email"
                     autoComplete="username"
                     onChange={(e) => setUsername(e.target.value)}
-                    className="px-2 py-1 rounded border border-gray-300"
+                    className="px-1 py-0.5 text-xs rounded border border-gray-300"
                 />
                 <input
                     type="password"
                     placeholder="Password"
                     autoComplete={showRegistration ? "new-password" : "current-password"}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="px-2 py-1 rounded border border-gray-300"
+                    className="px-1 py-0.5 text-xs rounded border border-gray-300"
                 />
-                {showRegistration ? (
+                {showLogin ? (
                     <button
                         type="button"
-                        onClick={handleRegister}
-                        className="bg-white text-blue-500 px-2 py-1 rounded hover:bg-gray-200"
+                        onClick={handleLogin}
+                        className="bg-white text-blue-500 text-xs px-1 py-0.5 rounded hover:bg-gray-200"
                     >
-                        Register
+                        Login
                     </button>
                 ) : (
                     <button
                         type="button"
-                        onClick={handleLogin}
-                        className="bg-white text-blue-500 px-2 py-1 rounded hover:bg-gray-200"
+                        onClick={handleRegister}
+                        className="bg-white text-blue-500 text-xs px-1 py-0.5 rounded hover:bg-gray-200"
                     >
-                        Login
+                        Register
                     </button>
                 )}
             </form>
-            <p className="text-white">{message}</p>
+            {showLogin ? (
+                <span
+                    onClick={() => { setShowLogin(false); setMessage("") }}
+                    className="inline-block text-white text-xs px-1 py-0.5 rounded hover:bg-blue-400 cursor-pointer"
+                >
+                    Register Now
+                </span>
+            ) : (
+                <span
+                    onClick={() => { setShowLogin(true); setMessage("") }}
+                    className="inline-block text-white text-xs px-1 py-0.5 rounded hover:bg-blue-400 cursor-pointer"
+                >
+                    Return to Login
+                </span>
+            )}
+
+            <p className="text-white text-xs">{message}</p>
         </div>
     );
 

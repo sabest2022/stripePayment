@@ -41,7 +41,7 @@ function Products() {
                     return (
                         <div key={product.id} className="border p-2 rounded-lg shadow-sm w-84 h-108"> {/* Adjusted width and height for 50% larger */}
                             <img src={product.images[0]} alt={product.name} className="w-full h-36 object-contain mb-2 rounded" /> {/* Adjusted image height to 50% larger */}
-                            <h3 className="text-sm mb-1 text-center">{`${product.name}  ${product.price.unit_amount / 100} Kr`}</h3>
+                            <h3 className="text-sm mb-1 text-center">{`${product.name}- ${product.price.unit_amount / 100} Kr`}</h3>
 
                             <p
                                 className={`text-xs text-gray-600 mb-2 overflow-hidden ${expandedDescriptions.includes(product.id) ? '' : 'line-clamp-1'}`}

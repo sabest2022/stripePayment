@@ -74,7 +74,7 @@ app.post('/webhook', express.raw({ type: 'application/json' }), async (request, 
                 const lineItems = fullSession.line_items.data;
                 const orderedItems = lineItems.map(item => {
                     return {
-                        description: item.description,
+                        name: item.description,
                         price: item.price.unit_amount,
                         quantity: item.quantity
                     };

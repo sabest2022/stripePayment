@@ -98,5 +98,45 @@
     ],
     "paymentStatus": "paid",
     "paymentCompletedDate": "2023-09-10T13:56:40.000Z"
+  },
+  {
+    "customerId": "cus_Oc6sGvDmi8SWoR",
+    "customer": "Askarians@yahoo.como",
+    "amountTotal": 201000,
+    "currency": "sek",
+    "orderedItems": [
+      {
+        "description": "Naturkunskap",
+        "price": 76000,
+        "quantity": 1
+      },
+      {
+        "description": "Juridik",
+        "price": 87000,
+        "quantity": 1
+      },
+      {
+        "description": "Medicin 1",
+        "price": 38000,
+        "quantity": 1
+      }
+    ],
+    "paymentStatus": "paid",
+    "paymentCompletedDate": "2023-09-10T18:47:44.000Z"
+  },
+  {
+    "customerId": "cus_Oc77h03hCAMncT",
+    "customer": "asd@dari.com",
+    "amountTotal": 174000,
+    "currency": "sek",
+    "orderedItems": [
+      {
+        "name": "Juridik",
+        "price": 87000,
+        "quantity": 2
+      }
+    ],
+    "paymentStatus": "paid",
+    "paymentCompletedDate": "2023-09-10T19:02:50.000Z"
   }
 ]

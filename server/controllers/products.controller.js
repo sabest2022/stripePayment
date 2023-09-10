@@ -16,7 +16,7 @@ async function fetchProducts() {
         });
 
         const products = await Promise.all(productPricesPromises);
-        console.log(products);
+
         return products;
 
     } catch (error) {

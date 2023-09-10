@@ -93,5 +93,65 @@
     "username": "Askarians@yahoo.co",
     "password": "$2b$10$vgQl528GdOa955RLVFR0cu7p4jKCcZillafRtk2VpK/j1ke3vJDYu",
     "stripeCustomerId": "cus_Oc1xkk02wT3kAb"
+  },
+  {
+    "username": "askarian@me.com",
+    "password": "$2b$10$da5dal9kA0zCEftXnl/SguRc3OE/CbkzaV.7m2Emqk7SplENTeLdu",
+    "stripeCustomerId": "cus_Oc5tDEhYclz8PK"
+  },
+  {
+    "username": "asgary@me.com",
+    "password": "$2b$10$wo02k1HLnDH/ymhvzUG.SuuMbYstX7E6DZrFPgc7Fc7BDXmVt6tTG",
+    "stripeCustomerId": "cus_Oc61Izgca1BWCB"
+  },
+  {
+    "username": "saeed@hey.com",
+    "password": "$2b$10$EJ3dLrlgl4MIhlm3JJngNOep2J/IQoaBC6idg0syVf5jvzlDXEOk2",
+    "stripeCustomerId": "cus_Oc69iB500pDBTY"
+  },
+  {
+    "username": "saeedask@helo.com",
+    "password": "$2b$10$kRgMfLG27/AtCYJXXGN4h.3mV1V/A7fJUUDiOwXQd/c/eejI61l1C",
+    "stripeCustomerId": "cus_Oc6BUvKEiIDiXW"
+  },
+  {
+    "username": "askarians@melon.com",
+    "password": "$2b$10$8Y3Xu9hwbgmLbbQZ363DI.rjyUB7gtfzMmGK1rE3hPhrro9MHtb3S",
+    "stripeCustomerId": "cus_Oc6Fq52FVCTBpO"
+  },
+  {
+    "username": "askarians@moly.com",
+    "password": "$2b$10$J5a8fI5xi9rapWePO6DQr.npZh8Xf8PjsEDBLPFDBnqXLhzDGcDMS",
+    "stripeCustomerId": "cus_Oc6M0VxPOwGXzP"
+  },
+  {
+    "username": "askarians@me.coad",
+    "password": "$2b$10$i.W4EhghEgCK8ZQxGBmjOemVzuQ9zZQxfNfVglppdOt5qd99tNU2K",
+    "stripeCustomerId": "cus_Oc6Q7PLhu9a4gx"
+  },
+  {
+    "username": "askarians@me.coada",
+    "password": "$2b$10$M0IUWOgQN8u6aABugDgCa.JkjtwEWnguvKv4yKXH8cD8EBm0DYW0m",
+    "stripeCustomerId": "cus_Oc6Zjrp48cpg84"
+  },
+  {
+    "username": "Askarians@yaho.com",
+    "password": "$2b$10$AhhLqKCBC/CyR2g1DeOqBePYKIOJFZ6BiXMPI5V40qed0K8OpQN/C",
+    "stripeCustomerId": "cus_Oc6csrhWh7HHop"
+  },
+  {
+    "username": "Askarians@yahoo.como",
+    "password": "$2b$10$TDHjeBGkx8e6ZDYRCJYemejli5FSb842WPoZdnDYF52ALKWXYwshW",
+    "stripeCustomerId": "cus_Oc6sGvDmi8SWoR"
+  },
+  {
+    "username": "Askarians@yahoo.combo",
+    "password": "$2b$10$cI84YNRzYdIiInSgmSKrQOf/zZmfJ6Ur3nI8BAJ8Ki74X95ncSf6e",
+    "stripeCustomerId": "cus_Oc6wbT5MzyfM7N"
+  },
+  {
+    "username": "asd@dari.com",
+    "password": "$2b$10$6zNSPaCcBZcQyE9K2fQAzOBZ.Bz2Vak1kP7At0fAqw8xCGQJnoLoC",
+    "stripeCustomerId": "cus_Oc77h03hCAMncT"
   }
 ]

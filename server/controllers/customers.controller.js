@@ -34,7 +34,7 @@ async function login(req, res) {
 
     // Case: User exists and password matches
     const token = jwt.sign({ username: user.username }, 'your_secret_key', { expiresIn: '1h' });
-
+    console.log(user);
     // Set JWT token as an httpOnly cookie
     res.cookie('auth-token', token, {
         httpOnly: true,
@@ -44,7 +44,7 @@ async function login(req, res) {
     });
 
     console.log("Sending Logged in response...");
-    res.status(200).json({ message: "Logged in" });
+    res.status(200).json({ message: ` Hi, ${username}` });
 }
 
 
@@ -61,6 +61,8 @@ async function register(req, res) {
         return res.status(409).json({ message: "Email already registered, choose another one!" });
     }
     try {
+
+
         // Create customer in Stripe
         const createdCustomer = await stripe.customers.create({
             // You might want to provide email or other details here, not password.
@@ -75,13 +77,24 @@ async function register(req, res) {
             ...req.body, password: await bcrypt.hash(req.body.password, 10),
             stripeCustomerId: customerId
         };
+        console.log(user);
+
         users.push(user);
         fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
 
-        const jsonUser = { ...user };
-        delete jsonUser.password;
+        const token = jwt.sign({ username: user.username }, 'your_secret_key', { expiresIn: '1h' });
+        console.log(user.username)
+        // Set JWT token as an httpOnly cookie
+        res.cookie('auth-token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV !== 'development',
+            maxAge: 3600000,  // The cookie will expire in 1 hour (value is in milliseconds)
+            sameSite: 'strict'
+        });
+        // const jsonUser = { ...user };
+        // delete jsonUser.password;
         // res.status(201).send(jsonUser);
-        res.status(201).json({ message: "User registered" });
+        res.status(201).json({ message: `${user.username} is registered` });
     } catch (error) {
         console.error('Error during registration:', error);
         res.status(500).send('Internal Server Error'); // or some other appropriate error message or status
