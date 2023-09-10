@@ -78,5 +78,20 @@
     "username": "masumeSayad@gmail.com",
     "password": "$2b$10$mjVbFjrzYGKo12QR3DWuQ.2uD2vOqndUua9YpZtzMBPG72VRjpf7S",
     "stripeCustomerId": "cus_ObdC6yqt0K54ZI"
+  },
+  {
+    "username": "Ask@yahoo.com",
+    "password": "$2b$10$V7FSDHDjSNhvVIUtL7XDZODfVHruKKCR6ofJawKMTyARB9hDlr9.e",
+    "stripeCustomerId": "cus_Oc0cuQn4LGy4p5"
+  },
+  {
+    "username": "Askarians@yahoo.com",
+    "password": "$2b$10$GeyfV4zo3GVBdWN/liw8ke9rMYUNtTqqQh6XSfBfV9WYrqlXT4cxu",
+    "stripeCustomerId": "cus_Oc1x4HJD9gVkxj"
+  },
+  {
+    "username": "Askarians@yahoo.co",
+    "password": "$2b$10$vgQl528GdOa955RLVFR0cu7p4jKCcZillafRtk2VpK/j1ke3vJDYu",
+    "stripeCustomerId": "cus_Oc1xkk02wT3kAb"
   }
 ]

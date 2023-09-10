@@ -36,7 +36,7 @@ app.use(cookieParser());
 
 const endpointSecret = "whsec_925f5e6e5a8acabe41114d465fcfa5b1e557567d324115618bd7842e6ad22f13";
 
-app.post('/webhook', express.raw({ type: 'application/json' }), (request, response) => {
+app.post('/webhook', express.raw({ type: 'application/json' }), async (request, response) => {
     const sig = request.headers['stripe-signature'];
 
     let event;
@@ -49,41 +49,50 @@ app.post('/webhook', express.raw({ type: 'application/json' }), (request, respon
         response.status(400).send(`Webhook Error: ${err.message}`);
         return;
     }
-
     // Handle the event
     switch (event.type) {
         case 'payment_intent.succeeded':
-            // const paymentIntent = event.data.object;
-            // Then d // Extract customer's email
-            // console.log(paymentIntent);
-            // const amount = paymentIntent.amount;
-            // const currency = paymentIntent.currency;
-            // const customer = paymentIntent.customer;
-            // const paymentMethod = paymentIntent.payment_method_types[0]; // The ID of the payment method used
-            // const newPayment = { customer_id: { customer }, amount: { amount }, currency: { currency }, paymentMethod: { paymentMethod } };
-            // console.log(`Received payment for ${amount} ${currency} from ${customer} paymentMethod ${paymentMethod}`);
-
-
             break;
         case 'checkout.session.completed':
-            const checkoutSession = event.data.object;
-            console.log("checkoutSession", checkoutSession);
+            try {
+                const checkoutSession = event.data.object;
+                console.log("checkoutSession", checkoutSession);
 
-            const amountTotal = checkoutSession.amount_total;
-            const currency = checkoutSession.currency;
-            const customerId = checkoutSession.customer;
-            const customer = checkoutSession.customer_details.email;
-            const paymentStatus = checkoutSession.payment_status;
-            const order = { customerId, customer, amountTotal, currency, paymentStatus };
-            console.log(order);
+                const amountTotal = checkoutSession.amount_total;
+                const currency = checkoutSession.currency;
+                const customerId = checkoutSession.customer;
+                const customer = checkoutSession.customer_details.email;
+                const paymentStatus = checkoutSession.payment_status;
+                const eventCreatedAt = event.created;
 
-            const ordersJson = fs.readFileSync(ordersFilePath, "utf8");
-            let orders = [];
-            orders = JSON.parse(ordersJson);
-            orders.push(order);
-            fs.writeFileSync(ordersFilePath, JSON.stringify(orders, null, 2));
+                const paymentCompletedDate = new Date(eventCreatedAt * 1000);
 
+                // Retrieve the session's line items
+                const fullSession = await stripe.checkout.sessions.retrieve(checkoutSession.id, {
+                    expand: ['line_items'],
+                },);
+                const lineItems = fullSession.line_items.data;
+                const orderedItems = lineItems.map(item => {
+                    return {
+                        description: item.description,
+                        price: item.price.unit_amount,
+                        quantity: item.quantity
+                    };
+                });
+                const order = { customerId, customer, amountTotal, currency, orderedItems, paymentStatus, paymentCompletedDate };
+                console.log("Line items:", orderedItems);
+                // Save order details
+                const ordersJson = fs.readFileSync(ordersFilePath, "utf8");
+                const orders = JSON.parse(ordersJson);
+                orders.push(order);
+                fs.writeFileSync(ordersFilePath, JSON.stringify(orders, null, 2));
+
+
+            } catch (error) {
+                console.error("Error processing checkout.session.completed event:", error);
+            }
             break;
+
         case 'charge.succeeded':
             const chargeSucceded = event.data.object;
             // console.log("chargeSucceded", chargeSucceded);

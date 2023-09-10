@@ -7,7 +7,7 @@ const stripe = require("stripe")(process.env.STRIPE_KEY)// server.js or wherever
 async function fetchProducts() {
     try {
 
-        const products = await stripe.products.list();
+        const products = await stripe.products.list({ active: true });
         return products;
 
     } catch (error) {
