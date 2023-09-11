@@ -5,19 +5,12 @@ const path = require('path');
 const { customerRouter } = require("./routes/customers.route");
 const { productsRouter } = require("./routes/products.route");
 const { checkoutRouter } = require("./routes/checkout.route");
-
 const cors = require("cors");
-
 const fs = require('fs');
-
 const ordersFilePath = path.join(__dirname, './db', "orders.json");
-// console.log(usersFilePat)
-// const jsonData = fs.readFileSync(usersFilePat, "utf-8");
-// JSON.parse(jsonData);
-// console.log(jsonData);
-const stripe = require("stripe")(process.env.STRIPE_KEY)
 
-console.log(process.env.ENDPOINT_SECRET);
+const stripe = require("stripe")(process.env.STRIPE_KEY)
+const endpointSecret = process.env.ENDPOINT_SECRET;
 const app = express();
 
 app.use(cors({
@@ -25,25 +18,14 @@ app.use(cors({
     credentials: true
 }
 ));
-
 app.use(cookieParser());
-
-
-
-
-
 
 app.post('/webhook', express.raw({ type: 'application/json' }), async (request, response) => {
     const sig = request.headers['stripe-signature'];
-
-
     let event;
-
     try {
         event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
-
     } catch (err) {
-
         console.error(err.stack);
         response.status(400).send(`Webhook Error: ${err.message}`);
         return;
@@ -55,17 +37,13 @@ app.post('/webhook', express.raw({ type: 'application/json' }), async (request, 
         case 'checkout.session.completed':
             try {
                 const checkoutSession = event.data.object;
-                console.log("checkoutSession", checkoutSession);
-
                 const amountTotal = checkoutSession.amount_total / 100;
                 const currency = checkoutSession.currency;
                 const customerId = checkoutSession.customer;
                 const customer = checkoutSession.customer_details.email;
                 const paymentStatus = checkoutSession.payment_status;
                 const eventCreatedAt = event.created;
-
                 const paymentCompletedDate = new Date(eventCreatedAt * 1000);
-
                 // Retrieve the session's line items
                 const fullSession = await stripe.checkout.sessions.retrieve(checkoutSession.id, {
                     expand: ['line_items'],
@@ -85,8 +63,6 @@ app.post('/webhook', express.raw({ type: 'application/json' }), async (request, 
                 const orders = JSON.parse(ordersJson);
                 orders.push(order);
                 fs.writeFileSync(ordersFilePath, JSON.stringify(orders, null, 2));
-
-
             } catch (error) {
                 console.error("Error processing checkout.session.completed event:", error);
             }
@@ -104,7 +80,6 @@ app.post('/webhook', express.raw({ type: 'application/json' }), async (request, 
         default:
             console.log(`Unhandled event type ${event.type}`);
     }
-
     // Return a 200 response to acknowledge receipt of the event
     response.send();
 });

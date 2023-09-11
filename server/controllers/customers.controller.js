@@ -5,11 +5,7 @@ const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const stripe = require("stripe")(process.env.STRIPE_KEY)
 
-
 const usersFilePath = path.join(__dirname, '../db', 'custumers.json');
-// console.log(usersFilePath);
-// const jsonData = fs.readFileSync(usersFilePath, "utf-8");
-// JSON.parse(jsonData);
 let users = [];
 // const usersFilePath = "../db/customers.json";
 
@@ -31,8 +27,6 @@ const authorize = (req, res) => {
         res.status(401).send();
     }
 };
-
-
 
 async function login(req, res) {
     // console.log("The endpoint does work!")
@@ -65,12 +59,6 @@ async function login(req, res) {
 }
 
 
-// Write data to JSON file
-// const writeToJson = (filePath, data) => {
-//     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-// };
-
-
 async function register(req, res) {
     const existingUser = users.find((user) => user.username === req.body.username);
 
@@ -78,8 +66,6 @@ async function register(req, res) {
         return res.status(409).json({ message: "Email already registered, choose another one!" });
     }
     try {
-
-
         // Create customer in Stripe
         const createdCustomer = await stripe.customers.create({
             // You might want to provide email or other details here, not password.
@@ -108,18 +94,13 @@ async function register(req, res) {
             maxAge: 3600000,  // The cookie will expire in 1 hour (value is in milliseconds)
             sameSite: 'strict'
         });
-        // const jsonUser = { ...user };
-        // delete jsonUser.password;
-        // res.status(201).send(jsonUser);
+
         res.status(201).json({ message: `${user.username} is registered` });
     } catch (error) {
         console.error('Error during registration:', error);
         res.status(500).send('Internal Server Error'); // or some other appropriate error message or status
     }
 }
-
-
-
 //   Logout the user and remove the cookie and session
 
 async function logout(req, res) {
@@ -135,7 +116,5 @@ async function logout(req, res) {
 
     res.status(200).json({ message: "Logged out" });
 }
-
-
 
 module.exports = { register, login, logout, authorize, authorize };

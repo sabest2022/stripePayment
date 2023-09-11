@@ -323,5 +323,25 @@
     ],
     "paymentStatus": "paid",
     "paymentCompletedDate": "2023-09-11T17:08:16.000Z"
+  },
+  {
+    "customerId": "cus_OcS073DoK3rU0v",
+    "customer": "Askariansa@yahoo.com",
+    "amountTotal": 1140,
+    "currency": "sek",
+    "orderedItems": [
+      {
+        "name": "Naturkunskap",
+        "price": 760,
+        "quantity": 1
+      },
+      {
+        "name": "Medicin 1",
+        "price": 380,
+        "quantity": 1
+      }
+    ],
+    "paymentStatus": "paid",
+    "paymentCompletedDate": "2023-09-11T17:14:13.000Z"
   }
 ]
