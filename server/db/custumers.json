@@ -193,5 +193,10 @@
     "username": "Askariansa@yahoo.com",
     "password": "$2b$10$AuOnAjTjJyDLmoFO9Ps0I.HXkwWMSTUoL3GzPkbo6DtjMq85xsCom",
     "stripeCustomerId": "cus_OcS073DoK3rU0v"
+  },
+  {
+    "username": "Askarians@yahoo.compay",
+    "password": "$2b$10$1NzUnPkTwcdxGw7gREDi4efzCeo5pWf6KG9uLvWgjddPc4hfYem7u",
+    "stripeCustomerId": "cus_OcUh68CuhJzGcS"
   }
 ]
