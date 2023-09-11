@@ -135,7 +135,7 @@ function Register() {
                     onClick={() => { setShowLogin(false); setMessage("") }}
                     className="inline-block text-white text-xs px-1 py-0.5 rounded hover:bg-blue-400 cursor-pointer"
                 >
-                    Register Now
+                    Register
                 </span>
             ) : (
                 <span

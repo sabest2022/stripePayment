@@ -163,5 +163,25 @@
     "username": "masume@gmail.com",
     "password": "$2b$10$lNmUtxM.am16rmm2VY.ea.xvJPxAsuk1xV8d8C4EI0S3ujNA/CZ1i",
     "stripeCustomerId": "cus_Oc7m7VViEK6XJp"
+  },
+  {
+    "username": "fredrik@abc.se",
+    "password": "$2b$10$ixTqUmnqLXr6rn3GfR1G5OGqdj/i3HVSUFciGiqRlCquMRoElYll2",
+    "stripeCustomerId": "cus_OcKPnjfzTtCJHf"
+  },
+  {
+    "username": "Askarians@yahoo.comk",
+    "password": "$2b$10$ZYmWEklMrpgMgkqLuYO8AOiwT8o6t4r3mNRfzSgJ6jAEv8YhYoSHa",
+    "stripeCustomerId": "cus_OcNEqLL2aINDdC"
+  },
+  {
+    "username": "askarians@met.com",
+    "password": "$2b$10$9wenihBjci/YKvGzE933b.ucJpBARSiiImb2Q1.hII1ooylSrzvb2",
+    "stripeCustomerId": "cus_OcOJwIGmTZ1Q49"
+  },
+  {
+    "username": "askarians@me.comb",
+    "password": "$2b$10$CCc4SRrBeHycroAJ5OH8g.Ah.13/iM2JaR2uNqupL2unSmnNInhUC",
+    "stripeCustomerId": "cus_OcQbaskvn2CksD"
   }
 ]

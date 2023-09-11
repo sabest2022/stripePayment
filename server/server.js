@@ -119,31 +119,21 @@ app.use('/api', productsRouter);
 const getStripeCustomerIdByEmail = (email) => {
     // Read the db.json file synchronously
     const data = fs.readFileSync(usersFilePat, 'utf8');
-
     // Parse the file contents into a JavaScript array
     const users = JSON.parse(data);
-
     // Find the user with the matching email (or username)
-    console.log(email);
     const user = users.find(user => user.username === email);
-    console.log(user.stripeCustomerId);
     // If found, return the stripeCustomerId, else return null or handle appropriately
-
     return user ? user.stripeCustomerId : null;
 };
 
 
 const authenticateJWT = (req, res, next) => {
     const token = req.cookies['auth-token'];
-
     if (!token) return res.status(401).json("No token provided");
-
-
     try {
         const decoded = jwt.verify(token, 'your_secret_key');
-        console.log(decoded)
         req.username = decoded.username; // Passing email to the next middleware
-
         next();
     } catch (err) {
         console.log(token);
@@ -153,11 +143,8 @@ const authenticateJWT = (req, res, next) => {
 
 app.post("/create-checkout-session", authenticateJWT, async (req, res) => {
     const userEmail = req.username;
-
     // Get the customer ID from your local DB using userEmail
-    // This is a hypothetical function; implement it based on your actual data storage setup
     const stripeCustomerId = getStripeCustomerIdByEmail(userEmail);
-
     try {
         const session = await stripe.checkout.sessions.create({
             customer: stripeCustomerId,
@@ -168,10 +155,11 @@ app.post("/create-checkout-session", authenticateJWT, async (req, res) => {
                 }
             }),
             mode: "payment",
+            allow_promotion_codes: true,
             success_url: `${CLIENT_URL}/confirmation`,
-            cancel_url: CLIENT_URL
-        });
+            cancel_url: CLIENT_URL,
 
+        });
         res.status(200).json({
             url: session.url,
             sessionId: session.id,
