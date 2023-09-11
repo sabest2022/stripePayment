@@ -183,5 +183,15 @@
     "username": "askarians@me.comb",
     "password": "$2b$10$CCc4SRrBeHycroAJ5OH8g.Ah.13/iM2JaR2uNqupL2unSmnNInhUC",
     "stripeCustomerId": "cus_OcQbaskvn2CksD"
+  },
+  {
+    "username": "askarians@me.comk",
+    "password": "$2b$10$8H0JFIgs1.hbLm61.UCvc.CcY3cOnQusORwqytQFQdQtR904r1gTa",
+    "stripeCustomerId": "cus_OcRaGBXAsOegop"
+  },
+  {
+    "username": "Askariansa@yahoo.com",
+    "password": "$2b$10$AuOnAjTjJyDLmoFO9Ps0I.HXkwWMSTUoL3GzPkbo6DtjMq85xsCom",
+    "stripeCustomerId": "cus_OcS073DoK3rU0v"
   }
 ]

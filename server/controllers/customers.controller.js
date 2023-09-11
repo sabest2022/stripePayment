@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const stripe = require("stripe")(process.env.STRIPE_KEY)
-const CLIENT_URL = "http://localhost:5174"
+
 
 const usersFilePath = path.join(__dirname, '../db', 'custumers.json');
 // console.log(usersFilePath);
@@ -15,6 +15,23 @@ let users = [];
 
 const usersJson = fs.readFileSync(usersFilePath, "utf8");
 users = JSON.parse(usersJson);
+
+const authorize = (req, res) => {
+    const token = req.cookies['auth-token'];
+
+    if (token) {
+        try {
+            const decoded = jwt.verify(token, 'your_secret_key');
+            res.status(200).send({ message: `Hi, ${decoded.username}` });
+        } catch (err) {
+            console.log("Token verification failed:", err.message);
+            res.status(401).send();
+        }
+    } else {
+        res.status(401).send();
+    }
+};
+
 
 
 async function login(req, res) {
@@ -119,11 +136,6 @@ async function logout(req, res) {
     res.status(200).json({ message: "Logged out" });
 }
 
-async function authorize(req, res) {
-    if (!req.session._id) {
-        return res.status(401).json("You are not logged in");
-    }
-    res.status(200).json(req.session);
-}
 
-module.exports = { register, login, logout, authorize };
+
+module.exports = { register, login, logout, authorize, authorize };

@@ -1,19 +1,12 @@
 const express = require("express");
-const { fetchProducts } = require("../controllers/products.controller");
+
+const { createCheckoutSession, authenticateJWT } = require("../controllers/checkout.controller");
 
 
-const productsRouter = express
+
+const checkoutRouter = express
     .Router()
-    .get("/products", async (req, res) => {
-        try {
-            const products = await fetchProducts();
-            res.json(products);   // Send the products as response
-        } catch (error) {
-            console.error("Error in route:", error);
-            res.status(500).send("Error fetching products.");
-        }
-    });
-// .get("/customers/authorize", authorize);
+    .post("/create-checkout-session", authenticateJWT, createCheckoutSession)
 
-module.exports = { productsRouter };
 
+module.exports = { checkoutRouter };

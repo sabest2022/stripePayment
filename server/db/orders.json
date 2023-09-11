@@ -273,5 +273,55 @@
     ],
     "paymentStatus": "paid",
     "paymentCompletedDate": "2023-09-11T15:18:22.000Z"
+  },
+  {
+    "customerId": "cus_OcS073DoK3rU0v",
+    "customer": "Askariansa@yahoo.com",
+    "amountTotal": 760,
+    "currency": "sek",
+    "orderedItems": [
+      {
+        "name": "Naturkunskap",
+        "price": 760,
+        "quantity": 1
+      }
+    ],
+    "paymentStatus": "paid",
+    "paymentCompletedDate": "2023-09-11T17:01:48.000Z"
+  },
+  {
+    "customerId": "cus_OcS073DoK3rU0v",
+    "customer": "Askariansa@yahoo.com",
+    "amountTotal": 800,
+    "currency": "sek",
+    "orderedItems": [
+      {
+        "name": "Medicin 2",
+        "price": 420,
+        "quantity": 1
+      },
+      {
+        "name": "Medicin 1",
+        "price": 380,
+        "quantity": 1
+      }
+    ],
+    "paymentStatus": "paid",
+    "paymentCompletedDate": "2023-09-11T17:06:22.000Z"
+  },
+  {
+    "customerId": "cus_OcS073DoK3rU0v",
+    "customer": "Askariansa@yahoo.com",
+    "amountTotal": 760,
+    "currency": "sek",
+    "orderedItems": [
+      {
+        "name": "Naturkunskap",
+        "price": 760,
+        "quantity": 1
+      }
+    ],
+    "paymentStatus": "paid",
+    "paymentCompletedDate": "2023-09-11T17:08:16.000Z"
   }
 ]

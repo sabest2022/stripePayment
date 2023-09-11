@@ -8,7 +8,7 @@ function Header() {
         quantity: item.quantity // Assuming a default quantity of 1 for each product.
     }));
     async function handlePayment() {
-        const response = await fetch("http://localhost:3000/create-checkout-session", {
+        const response = await fetch("http://localhost:3000/api/create-checkout-session", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
