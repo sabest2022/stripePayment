@@ -22,9 +22,7 @@ function Register() {
                 }
             } catch (error) {
                 setIsLoggedIn(false);
-                // alert("Please log in to proceed!");
-                // setMessage("Please log in to proceed!");
-                // console.error("Axios error:", error.response.status);
+
             }
         }
         checkAuthStatus();
