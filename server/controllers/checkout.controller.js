@@ -19,7 +19,7 @@ const getStripeCustomerIdByEmail = (email) => {
 };
 const authenticateJWT = (req, res, next) => {
     const token = req.cookies['auth-token'];
-    if (!token) return res.status(401).json("No token provided");
+    if (!token) return res.status(401).json("Your session has expired. Please log in again.");
     try {
         const decoded = jwt.verify(token, 'your_secret_key');
         req.username = decoded.username; // Passing email to the next middleware
@@ -31,6 +31,11 @@ const authenticateJWT = (req, res, next) => {
 };
 const createCheckoutSession = async (req, res) => {
     const userEmail = req.username;
+    // Check if the cart is empty
+    if (!req.body || req.body.length === 0) {
+        return res.status(401).send("Cart is empty");
+    }// Check if the cart is empty
+
     // Get the customer ID from your local DB using userEmail
     const stripeCustomerId = getStripeCustomerIdByEmail(userEmail);
     try {

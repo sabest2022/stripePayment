@@ -208,5 +208,10 @@
     "username": "Askarians@yahoo.comvo",
     "password": "$2b$10$LEuUZLUghHdlGQOKgRMHtuDrqglfrXRmuKJbje8qsxWN5RNaaaQVW",
     "stripeCustomerId": "cus_OcfwNwp86wvoLR"
+  },
+  {
+    "username": "Askarians@yahoo.comiy",
+    "password": "$2b$10$ps/984DmcWVa.Pg4ttpliejn8tk2FnzsE.Ea16oGEQvnG8dvYHLPq",
+    "stripeCustomerId": "cus_OcgNNTmGLe9G2f"
   }
 ]

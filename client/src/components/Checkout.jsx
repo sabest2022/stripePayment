@@ -1,11 +1,8 @@
 import { useCartContext } from "../context/CartContext";
 
-
 function Checkout() {
 
     const { cart } = useCartContext();
-
-    // const { cart } = useCartContext();
     const transformedCart = cart.map(item => ({
         product: item.product.default_price,
         quantity: item.quantity // Assuming a default quantity of 1 for each product.
@@ -21,7 +18,8 @@ function Checkout() {
         }
         );
         if (response.status === 401) {
-            alert("Your session has expired. Please log in again.");
+            const serverMessage = await response.text();
+            alert(serverMessage);
             window.location = "/"; // replace with your login page URL
             return;
         }

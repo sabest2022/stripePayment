@@ -13,12 +13,11 @@ function Register() {
         async function checkAuthStatus() {
             try {
                 const response = await axios.get("http://localhost:3000/api/customers/status", { withCredentials: true });
-                console.log("Status response:", response.status);
+                // console.log("Status response:", response.status);
                 if (response.status === 200) {
                     setIsLoggedIn(true);
                     const serverMessage = response.data.message;
                     setMessage(serverMessage);
-                    console.log(serverMessage);
                 }
             } catch (error) {
                 setIsLoggedIn(false);
@@ -49,7 +48,6 @@ function Register() {
         }
     };
 
-
     const handleLogout = async () => {
         try {
             // Call the server's logout endpoint
@@ -57,7 +55,6 @@ function Register() {
 
             // Remove token from localStorage if it's there
             localStorage.removeItem('token');
-
             // Update UI state
             setIsLoggedIn(false);
             setMessage("Logged out successfully!");
@@ -65,7 +62,6 @@ function Register() {
             console.error("Error during logout:", error);
         }
     };
-
 
     const handleRegister = async () => {
         try {
@@ -144,7 +140,6 @@ function Register() {
             <p className="text-white text-xs">{message}</p>
         </div>
     );
-
 }
 
 export default Register;

@@ -1,17 +1,14 @@
-import { useCartContext } from "../context/CartContext";
 import { useEffect } from 'react';
 
 function Confirmation() {
     function toFirstPage() {
         window.location = "http://localhost:5173";
     }
-
     useEffect(() => {
         if (window.location.pathname === "/confirmation") {
             // Display a success message
             alert("Payment was successful!");
         }
-        // You can handle other paths similarly
     }, []);
 
     return (
@@ -23,8 +20,6 @@ function Confirmation() {
                 </button>
             </div>
         </div>
-
-
     );
 }
 
