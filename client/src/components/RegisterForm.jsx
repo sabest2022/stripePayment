@@ -9,7 +9,7 @@ function Register() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showLogin, setShowLogin] = useState(true);
     const [isEmailValid, setEmailValid] = useState(true);
-    const [emailError, setEmailError] = useState("");
+    // const [emailError, setEmailError] = useState("");
 
 
     const isValidEmail = (email) => {
@@ -113,7 +113,7 @@ function Register() {
                         setUsername(e.target.value);
                         if (!isValidEmail(e.target.value)) {
                             setEmailValid(false);
-                            setMessage("The input must be a valid email address.");
+                            setMessage("Username must be a valid email address.");
                         } else {
                             setEmailValid(true);
                             setMessage("");
