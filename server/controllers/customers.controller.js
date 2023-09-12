@@ -12,7 +12,6 @@ users = JSON.parse(usersJson);
 
 const authorize = (req, res) => {
     const token = req.cookies['auth-token'];
-
     if (token) {
         try {
             const decoded = jwt.verify(token, 'your_secret_key');
@@ -40,7 +39,6 @@ async function login(req, res) {
     }
     // Case: User exists and password matches
     const token = jwt.sign({ username: user.username }, 'your_secret_key', { expiresIn: '1h' });
-    console.log(user);
     // Set JWT token as an httpOnly cookie
     res.cookie('auth-token', token, {
         httpOnly: true,
@@ -48,7 +46,6 @@ async function login(req, res) {
         maxAge: 3600000,  // The cookie will expire in 1 hour (value is in milliseconds)
         sameSite: 'strict'
     });
-    console.log("Sending Logged in response...");
     res.status(200).json({ message: ` Hi, ${username}` });
 }
 
@@ -73,12 +70,10 @@ async function register(req, res) {
             ...req.body, password: await bcrypt.hash(req.body.password, 10),
             stripeCustomerId: customerId
         };
-
         users.push(user);
         fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
 
         const token = jwt.sign({ username: user.username }, 'your_secret_key', { expiresIn: '1h' });
-
         // Set JWT token as an httpOnly cookie
         res.cookie('auth-token', token, {
             httpOnly: true,

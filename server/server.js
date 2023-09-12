@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const cookieParser = require('cookie-parser');
-
 const { customerRouter } = require("./routes/customers.route");
 const { productsRouter } = require("./routes/products.route");
 const { checkoutRouter } = require("./routes/checkout.route");
@@ -15,6 +14,7 @@ app.use(cors({
     credentials: true
 }
 ));
+
 app.use(cookieParser());
 app.use(webhookRouter);
 app.use(express.json());

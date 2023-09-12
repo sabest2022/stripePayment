@@ -34,8 +34,7 @@ const createCheckoutSession = async (req, res) => {
     // Check if the cart is empty
     if (!req.body || req.body.length === 0) {
         return res.status(401).send("Cart is empty");
-    }// Check if the cart is empty
-
+    }
     // Get the customer ID from your local DB using userEmail
     const stripeCustomerId = getStripeCustomerIdByEmail(userEmail);
     try {

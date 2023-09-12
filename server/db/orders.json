@@ -413,5 +413,25 @@
     ],
     "paymentStatus": "paid",
     "paymentCompletedDate": "2023-09-12T06:57:16.000Z"
+  },
+  {
+    "customerId": "cus_Oc1x4HJD9gVkxj",
+    "customer": "Askarians@yahoo.com",
+    "amountTotal": 2500,
+    "currency": "sek",
+    "orderedItems": [
+      {
+        "name": "Juridik",
+        "price": 870,
+        "quantity": 2
+      },
+      {
+        "name": "Naturkunskap",
+        "price": 760,
+        "quantity": 1
+      }
+    ],
+    "paymentStatus": "paid",
+    "paymentCompletedDate": "2023-09-12T13:41:15.000Z"
   }
 ]
