@@ -82,3 +82,6 @@ Upon clicking the checkout button, the application will communicate with the Str
 
 Session Expiry:
 If a user's session has expired or the user is not logged in, they will be alerted and redirected to the login page.
+
+Cart Management
+the application ensures that user's cart data is preserved even if they are not logged in. We achieve this by storing cart content in the sessionStorage. When a user revisits or logs in, their previous cart state is retrieved and displayed, enhancing user experience.
