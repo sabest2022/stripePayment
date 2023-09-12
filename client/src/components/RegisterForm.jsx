@@ -22,13 +22,10 @@ function Register() {
                 }
             } catch (error) {
                 setIsLoggedIn(false);
-
             }
         }
         checkAuthStatus();
     }, []);
-
-
 
     const handleLogin = async () => {
         try {

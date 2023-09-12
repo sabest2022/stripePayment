@@ -4,10 +4,8 @@ const path = require('path');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const stripe = require("stripe")(process.env.STRIPE_KEY)
-
 const usersFilePath = path.join(__dirname, '../db', 'custumers.json');
 let users = [];
-// const usersFilePath = "../db/customers.json";
 
 const usersJson = fs.readFileSync(usersFilePath, "utf8");
 users = JSON.parse(usersJson);
@@ -102,10 +100,8 @@ async function register(req, res) {
     }
 }
 //   Logout the user and remove the cookie and session
-
 async function logout(req, res) {
     // If using token blacklisting, add the token from the cookie to the blacklist.
-
     // Clear the auth cookie
     res.cookie('auth-token', '', {
         expires: new Date(0),
