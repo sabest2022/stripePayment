@@ -52,18 +52,17 @@ JWT_SECRET=your_jwt_secret
 Replace your_stripe_secret_key, your_jwt_secret and your_stripe_endpoint_secret_key with your actual Stripe and JWT keys.
 
 Running the App:
-In the server directory, run the following command:
-
-bash
+In the server directory, run the following command:bash
 Copy code: 
 npm start
-This will start the server. Open a web browser and navigate to http://localhost:5173 to access the app.
+This will start the server.
 
 Running the Client:
 Once you've installed all the dependencies, you can start the client-side application using the following command:
 cd Client
 npm run dev
 
+Open a web browser and navigate to http://localhost:5173 to access the app.
 
 Webhooks:
 This application listens to Stripe webhooks for events such as successful payments. Set up Stripe CLI to forward events to localhost: stripe listen --forward-to localhost:3000/webhook   
