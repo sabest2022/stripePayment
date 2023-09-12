@@ -1,4 +1,3 @@
-
 Stripe Payment App
 A simple web application that allows users to make payments using Stripe. The application includes a basic header with a checkout button, which upon being clicked will initiate the Stripe payment process.
 
@@ -66,11 +65,7 @@ Open a web browser and navigate to http://localhost:5173 to access the app.
 
 Webhooks:
 This application listens to Stripe webhooks for events such as successful payments. Set up Stripe CLI to forward events to localhost: stripe listen --forward-to localhost:3000/webhook   
-The app listens to Stripe webhooks for various events, such as successful payments or payment creation. When a payment event occurs, the app handles it accordingly and may store relevant order details.
-
-bash
-Copy code: 
-stripe listen --forward-to localhost:3000/webhook
+When a payment event occurs, the app handles it accordingly and may store relevant order details.
 
 Usage:
 Initiate Payment:
@@ -83,4 +78,4 @@ Session Expiry:
 If a user's session has expired or the user is not logged in, they will be alerted and redirected to the login page.
 
 Cart Management
-the application ensures that user's cart data is preserved even if they are not logged in. We achieve this by storing cart content in the sessionStorage. When a user revisits or logs in, their previous cart state is retrieved and displayed, enhancing user experience.
+The application ensures that user's cart data is preserved even if they are not logged in. We achieve this by storing cart content in the sessionStorage. When a user revisits or logs in, their previous cart state is retrieved and displayed, enhancing user experience.
