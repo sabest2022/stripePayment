@@ -44,7 +44,7 @@ const handleWebhook = async (request, response) => {
                     };
                 });
                 const order = { customerId, customer, amountTotal, currency, orderedItems, paymentStatus, paymentCompletedDate };
-                console.log("Line items:", orderedItems);
+
                 // Save order details
                 const ordersJson = fs.readFileSync(ordersFilePath, "utf8");
                 const orders = JSON.parse(ordersJson);
@@ -65,7 +65,7 @@ const handleWebhook = async (request, response) => {
             break;
         // ... handle other event types
         default:
-            console.log(`Unhandled event type ${event.type}`);
+
     }
     // Return a 200 response to acknowledge receipt of the event
     response.send();

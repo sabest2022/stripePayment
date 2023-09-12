@@ -1,11 +1,17 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 const CartContext = createContext();
 export const useCartContext = () => useContext(CartContext);
 
 const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+    const initialCart = JSON.parse(sessionStorage.getItem('cart')) || [];
 
+    const [cart, setCart] = useState(initialCart);
+    useEffect(() => {
+        // Whenever the cart changes, update the sessionStorage
+        sessionStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
     function addToCart(product) {
+
         // Update the state with the local copy
         setCart(prevCart => {
             const existingProduct = prevCart.find(item => item.product.id === product.id);

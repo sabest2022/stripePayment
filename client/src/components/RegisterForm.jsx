@@ -8,6 +8,14 @@ function Register() {
     const [showRegistration, setShowRegistration] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showLogin, setShowLogin] = useState(true);
+    const [isEmailValid, setEmailValid] = useState(true);
+    const [emailError, setEmailError] = useState("");
+
+
+    const isValidEmail = (email) => {
+        const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        return pattern.test(email);
+    };
 
     useEffect(() => {
         async function checkAuthStatus() {
@@ -27,6 +35,10 @@ function Register() {
     }, []);
 
     const handleLogin = async () => {
+        // if (!isValidEmail(username)) {
+        //     setMessage("Please enter a valid email address.");
+        //     return;
+        // }
         try {
             const res = await axios.post("http://localhost:3000/api/customers/login", { username, password },
                 { withCredentials: true });
@@ -64,6 +76,10 @@ function Register() {
     };
 
     const handleRegister = async () => {
+        // if (!isValidEmail(username)) {
+        //     setMessage("Please enter a valid email address.");
+        //     return;
+        // }
         try {
             const res = await axios.post("http://localhost:3000/api/customers/register", { username, password }, { withCredentials: true });
             if (res.status === 201) {  // Check for status 201 which means created
@@ -93,8 +109,17 @@ function Register() {
                     type="text"
                     placeholder="Email"
                     autoComplete="username"
-                    onChange={(e) => setUsername(e.target.value)}
-                    className="px-1 py-0.5 text-xs rounded border border-gray-300"
+                    onChange={(e) => {
+                        setUsername(e.target.value);
+                        if (!isValidEmail(e.target.value)) {
+                            setEmailValid(false);
+                            setMessage("The input must be a valid email address.");
+                        } else {
+                            setEmailValid(true);
+                            setMessage("");
+                        }
+                    }}
+                    className={`px-1 py-0.5 text-xs rounded border ${isEmailValid ? 'border-gray-300' : 'border-red-500'}`}
                 />
                 <input
                     type="password"
