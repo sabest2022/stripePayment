@@ -57,7 +57,7 @@ In the server directory, run the following command:
 bash
 Copy code: 
 npm start
-This will start the server. Open a web browser and navigate to http://localhost:3000 to access the app.
+This will start the server. Open a web browser and navigate to http://localhost:5173 to access the app.
 
 Running the Client:
 Once you've installed all the dependencies, you can start the client-side application using the following command:
