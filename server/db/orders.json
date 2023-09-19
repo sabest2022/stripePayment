@@ -1,227 +1,42 @@
 [
   {
-    "customerId": "cus_Obb8SpwTj8swlK",
-    "customer": "askarians@meli.se",
-    "amountTotal": 38000,
-    "currency": "sek",
-    "paymentStatus": "paid"
-  },
-  {
-    "customerId": "cus_Obb8SpwTj8swlK",
-    "customer": "askarians@meli.se",
-    "amountTotal": 171000,
-    "currency": "sek",
-    "paymentStatus": "paid"
-  },
-  {
-    "customerId": "cus_ObdC6yqt0K54ZI",
-    "customer": "masumeSayad@gmail.com",
-    "amountTotal": 250000,
-    "currency": "sek",
-    "paymentStatus": "paid"
-  },
-  {
-    "customerId": "cus_Oc0cuQn4LGy4p5",
-    "customer": "Ask@yahoo.com",
-    "amountTotal": 205000,
-    "currency": "sek",
-    "paymentStatus": "paid"
-  },
-  {
-    "customerId": "cus_Oc0cuQn4LGy4p5",
-    "customer": "Ask@yahoo.com",
-    "amountTotal": 243000,
-    "currency": "sek",
-    "paymentStatus": "paid"
-  },
-  {
-    "customerId": "cus_Oc0cuQn4LGy4p5",
-    "customer": "Ask@yahoo.com",
-    "amountTotal": 76000,
-    "currency": "sek",
-    "paymentStatus": "paid"
-  },
-  {
-    "customerId": "cus_Oc0cuQn4LGy4p5",
-    "customer": "Ask@yahoo.com",
-    "amountTotal": 76000,
-    "currency": "sek",
-    "paymentStatus": "paid"
-  },
-  {
-    "customerId": "cus_Oc0cuQn4LGy4p5",
-    "customer": "Ask@yahoo.com",
-    "amountTotal": 118000,
-    "currency": "sek",
-    "paymentStatus": "paid"
-  },
-  {
-    "customerId": "cus_Oc1xkk02wT3kAb",
-    "customer": "Askarians@yahoo.co",
-    "amountTotal": 156000,
-    "currency": "sek",
-    "extractedData": [
-      {
-        "description": "Naturkunskap",
-        "price": 76000,
-        "quantity": 1
-      },
-      {
-        "description": "Medicin 1",
-        "price": 38000,
-        "quantity": 1
-      },
-      {
-        "description": "Medicin 2",
-        "price": 42000,
-        "quantity": 1
-      }
-    ],
-    "paymentStatus": "paid"
-  },
-  {
-    "customerId": "cus_Oc1xkk02wT3kAb",
-    "customer": "Askarians@yahoo.co",
-    "amountTotal": 337000,
-    "currency": "sek",
-    "orderedItems": [
-      {
-        "description": "Naturkunskap",
-        "price": 76000,
-        "quantity": 1
-      },
-      {
-        "description": "Juridik",
-        "price": 87000,
-        "quantity": 3
-      }
-    ],
-    "paymentStatus": "paid",
-    "paymentCompletedDate": "2023-09-10T13:56:40.000Z"
-  },
-  {
-    "customerId": "cus_Oc6sGvDmi8SWoR",
-    "customer": "Askarians@yahoo.como",
-    "amountTotal": 201000,
-    "currency": "sek",
-    "orderedItems": [
-      {
-        "description": "Naturkunskap",
-        "price": 76000,
-        "quantity": 1
-      },
-      {
-        "description": "Juridik",
-        "price": 87000,
-        "quantity": 1
-      },
-      {
-        "description": "Medicin 1",
-        "price": 38000,
-        "quantity": 1
-      }
-    ],
-    "paymentStatus": "paid",
-    "paymentCompletedDate": "2023-09-10T18:47:44.000Z"
-  },
-  {
-    "customerId": "cus_Oc77h03hCAMncT",
-    "customer": "asd@dari.com",
-    "amountTotal": 174000,
+    "customerId": "cus_Oc1x4HJD9gVkxj",
+    "customer": "Askarians@yahoo.com",
+    "amountTotal": 2500,
     "currency": "sek",
     "orderedItems": [
       {
         "name": "Juridik",
-        "price": 87000,
+        "price": 870,
         "quantity": 2
-      }
-    ],
-    "paymentStatus": "paid",
-    "paymentCompletedDate": "2023-09-10T19:02:50.000Z"
-  },
-  {
-    "customerId": "cus_Oc798cuiNOyWdF",
-    "customer": "cadi@padi.com",
-    "amountTotal": 243000,
-    "currency": "sek",
-    "orderedItems": [
-      {
-        "name": "Naturkunskap",
-        "price": 76000,
-        "quantity": 1
       },
-      {
-        "name": "Juridik",
-        "price": 87000,
-        "quantity": 1
-      },
-      {
-        "name": "Medicin 2",
-        "price": 42000,
-        "quantity": 1
-      },
-      {
-        "name": "Medicin 1",
-        "price": 38000,
-        "quantity": 1
-      }
-    ],
-    "paymentStatus": "paid",
-    "paymentCompletedDate": "2023-09-10T19:04:59.000Z"
-  },
-  {
-    "customerId": "cus_Oc798cuiNOyWdF",
-    "customer": "cadi@padi.com",
-    "amountTotal": 163000,
-    "currency": "sek",
-    "orderedItems": [
       {
         "name": "Naturkunskap",
         "price": 760,
         "quantity": 1
-      },
-      {
-        "name": "Juridik",
-        "price": 870,
-        "quantity": 1
       }
     ],
     "paymentStatus": "paid",
-    "paymentCompletedDate": "2023-09-10T19:07:35.000Z"
+    "paymentCompletedDate": "2023-09-12T13:41:15.000Z"
   },
   {
-    "customerId": "cus_Oc798cuiNOyWdF",
-    "customer": "cadi@padi.com",
-    "amountTotal": 2160,
+    "customerId": "cus_Ocq4yb0C6UKKki",
+    "customer": "Askarians@yahoo.com",
+    "amountTotal": 7610,
     "currency": "sek",
     "orderedItems": [
       {
-        "name": "Medicin 2",
-        "price": 420,
-        "quantity": 1
-      },
-      {
         "name": "Juridik",
         "price": 870,
+        "quantity": 7
+      },
+      {
+        "name": "Naturkunskap",
+        "price": 760,
         "quantity": 2
       }
     ],
     "paymentStatus": "paid",
-    "paymentCompletedDate": "2023-09-10T19:09:26.000Z"
-  },
-  {
-    "customerId": "cus_Oc7m7VViEK6XJp",
-    "customer": "masume@gmail.com",
-    "amountTotal": 420,
-    "currency": "sek",
-    "orderedItems": [
-      {
-        "name": "Medicin 2",
-        "price": 420,
-        "quantity": 1
-      }
-    ],
-    "paymentStatus": "paid",
-    "paymentCompletedDate": "2023-09-10T19:44:16.000Z"
+    "paymentCompletedDate": "2023-09-12T17:29:54.000Z"
   }
 ]

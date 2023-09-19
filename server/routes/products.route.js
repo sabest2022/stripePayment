@@ -1,7 +1,6 @@
 const express = require("express");
 const { fetchProducts } = require("../controllers/products.controller");
 
-
 const productsRouter = express
     .Router()
     .get("/products", async (req, res) => {
@@ -13,7 +12,6 @@ const productsRouter = express
             res.status(500).send("Error fetching products.");
         }
     });
-// .get("/customers/authorize", authorize);
 
 module.exports = { productsRouter };
 

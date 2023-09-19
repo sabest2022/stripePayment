@@ -8,31 +8,37 @@ function Register() {
     const [showRegistration, setShowRegistration] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showLogin, setShowLogin] = useState(true);
+    const [isEmailValid, setEmailValid] = useState(true);
+    // const [emailError, setEmailError] = useState("");
+
+
+    const isValidEmail = (email) => {
+        const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        return pattern.test(email);
+    };
 
     useEffect(() => {
         async function checkAuthStatus() {
             try {
                 const response = await axios.get("http://localhost:3000/api/customers/status", { withCredentials: true });
-                console.log("Status response:", response.status);
+                // console.log("Status response:", response.status);
                 if (response.status === 200) {
                     setIsLoggedIn(true);
                     const serverMessage = response.data.message;
                     setMessage(serverMessage);
-                    console.log(serverMessage);
                 }
             } catch (error) {
                 setIsLoggedIn(false);
-                // alert("Please log in to proceed!");
-                // setMessage("Please log in to proceed!");
-                // console.error("Axios error:", error.response.status);
             }
         }
         checkAuthStatus();
     }, []);
 
-
-
     const handleLogin = async () => {
+        // if (!isValidEmail(username)) {
+        //     setMessage("Please enter a valid email address.");
+        //     return;
+        // }
         try {
             const res = await axios.post("http://localhost:3000/api/customers/login", { username, password },
                 { withCredentials: true });
@@ -54,7 +60,6 @@ function Register() {
         }
     };
 
-
     const handleLogout = async () => {
         try {
             // Call the server's logout endpoint
@@ -62,7 +67,6 @@ function Register() {
 
             // Remove token from localStorage if it's there
             localStorage.removeItem('token');
-
             // Update UI state
             setIsLoggedIn(false);
             setMessage("Logged out successfully!");
@@ -71,8 +75,11 @@ function Register() {
         }
     };
 
-
     const handleRegister = async () => {
+        // if (!isValidEmail(username)) {
+        //     setMessage("Please enter a valid email address.");
+        //     return;
+        // }
         try {
             const res = await axios.post("http://localhost:3000/api/customers/register", { username, password }, { withCredentials: true });
             if (res.status === 201) {  // Check for status 201 which means created
@@ -102,8 +109,17 @@ function Register() {
                     type="text"
                     placeholder="Email"
                     autoComplete="username"
-                    onChange={(e) => setUsername(e.target.value)}
-                    className="px-1 py-0.5 text-xs rounded border border-gray-300"
+                    onChange={(e) => {
+                        setUsername(e.target.value);
+                        if (!isValidEmail(e.target.value)) {
+                            setEmailValid(false);
+                            setMessage("Username must be a valid email address.");
+                        } else {
+                            setEmailValid(true);
+                            setMessage("");
+                        }
+                    }}
+                    className={`px-1 py-0.5 text-xs rounded border ${isEmailValid ? 'border-gray-300' : 'border-red-500'}`}
                 />
                 <input
                     type="password"
@@ -135,7 +151,7 @@ function Register() {
                     onClick={() => { setShowLogin(false); setMessage("") }}
                     className="inline-block text-white text-xs px-1 py-0.5 rounded hover:bg-blue-400 cursor-pointer"
                 >
-                    Register Now
+                    Register
                 </span>
             ) : (
                 <span
@@ -149,7 +165,6 @@ function Register() {
             <p className="text-white text-xs">{message}</p>
         </div>
     );
-
 }
 
 export default Register;

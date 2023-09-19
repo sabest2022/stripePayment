@@ -23,7 +23,6 @@ function Products() {
             try {
                 const response = await axios.get('http://localhost:3000/api/products');
                 setProducts(response.data);
-                console.log(response.data);
             } catch (error) {
                 console.error("Error fetching products:", error);
             }
@@ -51,7 +50,7 @@ function Products() {
                             </p>
                             <div className="flex gap-2 mt-2 justify-center"> {/* Center-aligned buttons */}
                                 <button onClick={() => addToCart(product)} className="bg-blue-500 text-white text-xs rounded-md hover:bg-blue-600 transition-colors w-16 h-4">Add</button>
-                                <button onClick={() => { console.log("Remove button clicked for:", product); removeFromCart(product); }} className="bg-red-500 text-white text-xs rounded-md hover:bg-red-600 transition-colors w-16 h-4">Remove</button>
+                                <button onClick={() => { removeFromCart(product); }} className="bg-red-500 text-white text-xs rounded-md hover:bg-red-600 transition-colors w-16 h-4">Remove</button>
                             </div>
                         </div>
                     );
