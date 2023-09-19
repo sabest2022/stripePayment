@@ -106,8 +106,8 @@ Installation & Konfiguration:
 Klona Repositoryt
 Installera Beroenden:
 Navigera till serverkatalogen och installera nödvändiga paket.
-Beroenden:
 
+Beroenden:
 Klient:
 
 autoprefixer (^10.4.15): Hjälper till med att bearbeta CSS.
@@ -116,6 +116,7 @@ postcss (^8.4.29): Ett verktyg för att omvandla CSS med JavaScript.
 react (^18.2.0) & react-dom (^18.2.0): Huvudbibliotek för att bygga användargränssnittet.
 react-router-dom (^6.15.0): Möjliggör routing och navigation i applikationen.
 tailwindcss (^3.3.3): Ett CSS-ramverk för att snabbt bygga anpassade användargränssnitt.
+
 Server:
 
 bcrypt (^5.1.1): Används för att hash lösenord och garantera säkerhet.
@@ -141,28 +142,9 @@ Installation & Konfiguration:
 - Installera Beroenden:
 Navigera till serverkatalogen och installera nödvändiga paket.
 
-**Beroenden:**
-
-**Klient:**
-- autoprefixer (^10.4.15): Hjälper till med att bearbeta CSS.
-- axios (^1.5.0): Används för att göra HTTP-förfrågningar.
-- postcss (^8.4.29): Ett verktyg för att omvandla CSS med JavaScript.
-- react (^18.2.0) & react-dom (^18.2.0): Huvudbibliotek för att bygga användargränssnittet.
-- react-router-dom (^6.15.0): Möjliggör routing och navigation i applikationen.
-- tailwindcss (^3.3.3): Ett CSS-ramverk för att snabbt bygga anpassade användargränssnitt.
-
-**Server:**
-- bcrypt (^5.1.1): Används för att hash lösenord och garantera säkerhet.
-- cookie-parser (^1.4.6): Middleware för att tolka cookie headers.
-- cors (^2.8.5): Aktiverar CORS (Cross-Origin Resource Sharing) för servern.
-- dotenv (^16.3.1): Laddar miljövariabler från en .env-fil.
-- express (^4.18.2): Webbapplikationsramverk för att bygga API:er.
-- jsonwebtoken (^9.0.2): Gör det möjligt med autentisering med hjälp av JWT (JSON Web Tokens).
-- stripe (^13.4.0): Node-bibliotek för Stripe API, för betalningshantering.
 
 Kör Appen:
 - I serverkatalogen, kör följande kommando: `npm start`
-
 Detta startar servern.
 
 Köra Klienten:
